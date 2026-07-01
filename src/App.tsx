@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -227,8 +228,6 @@ function WhatsAppFAB() {
     </div>
   );
 }
-
-import { HelmetProvider } from 'react-helmet-async';
 
 export default function App() {
   return (
