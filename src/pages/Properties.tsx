@@ -99,7 +99,7 @@ export default function Properties() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="bg-gold-gradient text-black px-8 py-3 rounded-full font-bold uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(233,196,0,0.3)] shrink-0 transition-transform hover:scale-105 active:scale-95">
+          <button className="btn-gold px-8 py-3 rounded-full shrink-0">
             Search
           </button>
         </div>

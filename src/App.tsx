@@ -187,7 +187,7 @@ function AnimatedRoutes() {
 // ── Improved WhatsApp FAB with animated pulse rings ───────────────────────
 function WhatsAppFAB() {
   return (
-    <div className="fixed bottom-6 right-6 z-50" style={{ width: '56px', height: '56px' }}>
+    <div className="fixed bottom-3 right-3 md:bottom-6 md:right-6 z-50" style={{ width: '56px', height: '56px' }}>
       {/* Pulse ring 1 */}
       <motion.span
         style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'rgba(37,211,102,0.4)' }}
@@ -234,7 +234,7 @@ export default function App() {
       {/* Global Background Layer */}
       <div className="global-bg-mesh" />
       
-      <div className="min-h-screen flex flex-col relative z-0">
+      <div className="min-h-screen flex flex-col relative z-0 overflow-x-hidden">
         <ScrollToTop />
         <ScrollProgress />
         <SoundEffects />

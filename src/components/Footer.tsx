@@ -120,7 +120,7 @@ export default function Footer() {
           
           {/* Left: Brand (Spans 5 cols) */}
           <motion.div className="md:col-span-12 lg:col-span-5 flex flex-col items-start" variants={listVariants} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <motion.img variants={linkItemVariant} src="/logo.png" alt="MJ Marketing" className="w-20 h-20 rounded-full bg-white p-2 object-contain mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10" />
+            <motion.img variants={linkItemVariant} src="/logo.png" alt="MJ Marketing" className="hidden md:block w-20 h-20 rounded-full bg-white p-2 object-contain mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10" />
             
             <motion.p variants={linkItemVariant} className="text-white/60 text-base leading-relaxed mb-10 font-light" style={{ fontFamily: 'Inter', maxWidth: '380px' }}>
               Redefining luxury real estate in Peshawar. We offer exclusive access to the city's most prestigious properties, with unparalleled service and expertise since 2015.

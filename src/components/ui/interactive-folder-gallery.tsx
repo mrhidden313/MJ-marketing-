@@ -33,9 +33,9 @@ export function InteractiveFolderGallery({
 
   return (
     <div className={`w-full py-20 relative ${className || ""}`}>
-      <div className="relative w-full min-h-[500px] flex flex-col items-center justify-center">
+      <div className="relative w-full min-h-[400px] md:min-h-[500px] flex flex-col items-center justify-center">
 
-        <div className="relative w-[480px] h-[600px] flex justify-center pointer-events-none z-0">
+        <div className="relative w-[480px] h-[600px] flex justify-center pointer-events-none z-0 scale-[0.65] sm:scale-75 md:scale-100 origin-center md:origin-center">
 
           <motion.div 
             className="absolute bottom-6 w-[480px] h-[330px] drop-shadow-2xl"
