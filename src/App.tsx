@@ -9,6 +9,8 @@ import Properties from './pages/Properties';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -178,6 +180,8 @@ function AnimatedRoutes() {
         <Route path="/about"      element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact"    element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/projects"   element={<PageWrapper><Projects /></PageWrapper>} />
+        <Route path="/privacy"    element={<PageWrapper><Privacy /></PageWrapper>} />
+        <Route path="/terms"      element={<PageWrapper><Terms /></PageWrapper>} />
         <Route path="/login"      element={<PageWrapper><Login /></PageWrapper>} />
         <Route path="/admin"      element={<ProtectedRoute><Admin /></ProtectedRoute>} />
       </Routes>

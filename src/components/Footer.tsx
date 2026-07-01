@@ -235,14 +235,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar inside the card */}
-        <div className="relative z-10 border-t border-white/10 px-8 py-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 bg-black/30 backdrop-blur-xl">
-          <span className="text-white/30 text-xs font-light text-center md:text-left" style={{ fontFamily: 'Inter' }}>
-            © {new Date().getFullYear()} MJ GROUP OF COMPANIES (PVT) LTD. All rights reserved.
-          </span>
-          <div className="flex flex-wrap justify-center items-center gap-3">
-            <span className="text-white/30 text-xs font-light" style={{ fontFamily: 'Inter' }}>FBR NTN: 2120137279249</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="text-white/30 text-xs font-light" style={{ fontFamily: 'Inter' }}>Excise: REA/MVD/5781/2024-2025</span>
+        <div className="relative z-10 border-t border-white/10 px-8 py-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 bg-black/30 backdrop-blur-xl text-sm text-white/50">
+          <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} MJ Marketing. All rights reserved.</p>
+            <p className="text-xs text-white/40">Proprietor: ABDUL JALIL | FBR NTN: 2120137279249 | REA: 5781/2024-2025</p>
+          </div>
+          <div className="flex gap-6">
+            <Link to="/privacy" className="hover:text-gold-400 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-gold-400 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </motion.footer>
