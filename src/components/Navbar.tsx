@@ -94,6 +94,22 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
+          {/* ── Mobile Center Text (Only shows when scrolled and menu is closed) ── */}
+          <AnimatePresence>
+            {scrolled && !open && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="md:hidden flex-1 flex justify-center pointer-events-none"
+              >
+                <span className="text-gold-400 font-display font-bold text-lg tracking-widest uppercase" style={{ textShadow: '0 0 15px rgba(233,196,0,0.3)' }}>
+                  MJ Marketing
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* ── Desktop Nav — center pill ── */}
           <motion.nav 
             initial={{ opacity: 0, y: -50 }}

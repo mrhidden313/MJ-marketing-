@@ -555,7 +555,7 @@ export default function Home() {
             variants={{ show: { transition: { staggerChildren: 0.05 } } }}
             className="flex flex-wrap justify-center gap-x-[3vw] gap-y-0 md:gap-y-2 mb-3 md:mb-5"
             style={{
-              fontSize: 'clamp(2.2rem, 11vw, 7rem)', // Lowered min size so it fits on mobile
+              fontSize: 'clamp(2.8rem, 13vw, 7rem)', // Increased min size by ~15% for mobile
               letterSpacing: '-0.04em',
               fontFamily: 'Inter',
               fontWeight: 900,
@@ -645,11 +645,11 @@ export default function Home() {
           {/* Buttons — below stats */}
           <motion.div
             variants={heroItemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full sm:w-auto"
           >
             <Link
               to="/properties"
-              className="btn-gold group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-full sm:w-auto flex justify-center items-center"
+              className="btn-gold group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-[80%] sm:w-auto mx-auto sm:mx-0 flex justify-center items-center"
             >
               Explore Properties
               <motion.span
@@ -663,7 +663,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="btn-outline group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-full sm:w-auto flex justify-center items-center"
+              className="btn-outline group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-[80%] sm:w-auto mx-auto sm:mx-0 flex justify-center items-center"
             >
               Talk to an Agent
               <motion.span
