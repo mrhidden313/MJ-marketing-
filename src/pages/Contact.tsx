@@ -155,14 +155,16 @@ export default function Contact() {
 
       {/* ═══════════════════════════════ PREMIUM MAP SECTION ════════════════════════════ */}
       <section className="relative h-[500px] w-full mt-20 group">
-        <div className="absolute inset-0 bg-[#02040a] opacity-50 pointer-events-none z-10" />
+        <div className="hidden md:block absolute inset-0 bg-[#02040a] opacity-30 pointer-events-none z-10" />
         
         {/* Top Floating Badge */}
-        <FadeUp className="absolute top-10 left-1/2 -translate-x-1/2 z-20 liquid-glass px-8 py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] pointer-events-none">
-          <p className="text-white font-bold tracking-widest uppercase text-sm flex items-center gap-2">
-            <MapPin className="text-gold-500" size={18} /> MJ Marketing Office
-          </p>
-        </FadeUp>
+        <div className="absolute top-10 left-0 w-full flex justify-center z-20 pointer-events-none">
+          <FadeUp className="liquid-glass px-6 py-3 md:px-8 md:py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+            <p className="text-white font-bold tracking-widest uppercase text-[10px] md:text-sm flex items-center gap-2">
+              <MapPin className="text-gold-500" size={16} /> MJ Marketing Office
+            </p>
+          </FadeUp>
+        </div>
 
         {/* Custom Premium "Open in Maps" Button Overlay */}
         <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
@@ -184,7 +186,7 @@ export default function Contact() {
           allowFullScreen={false}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="grayscale opacity-70"
+          className="grayscale opacity-70 md:opacity-80 pointer-events-none md:pointer-events-auto"
         />
       </section>
     </>

@@ -94,9 +94,14 @@ export default function PropertyCard({ p }: { p: Property }) {
       </AnimatePresence>
 
       <TiltWrapper>
-      <article className="property-card rounded-2xl overflow-hidden group cursor-pointer">
+      <article className="property-card rounded-2xl overflow-hidden group border border-white/[0.06] md:border-transparent bg-white/[0.01] md:bg-transparent shadow-[0_0_15px_rgba(255,255,255,0.02)] md:shadow-none transition-colors">
         {/* Image */}
-        <div className="relative h-60 overflow-hidden">
+        <div 
+          className="relative h-60 overflow-hidden cursor-pointer" 
+          onClick={() => setIsFullscreen(true)}
+          role="button"
+          tabIndex={0}
+        >
           <img
             src={p.image}
             alt={p.title}
