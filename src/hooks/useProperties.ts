@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, query, limit, getDocs, startAfter } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
 export function useProperties() {
@@ -9,46 +9,35 @@ export function useProperties() {
   useEffect(() => {
     let isMounted = true;
 
-    async function fetchSequentially() {
+    async function fetchPropertiesFast() {
       try {
         setLoading(true);
-        let lastVisible = null;
-        let hasMore = true;
-
-        while (hasMore && isMounted) {
-          const q = lastVisible 
-            ? query(collection(db, "properties"), limit(1), startAfter(lastVisible))
-            : query(collection(db, "properties"), limit(1));
-            
-          const snapshot = await getDocs(q);
+        
+        // 1. Fetch EVERYTHING instantly in one ultra-fast request
+        const querySnapshot = await getDocs(collection(db, "properties"));
+        const allData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        
+        // 2. Visually load them one by one (Waterfall effect) without network lag
+        for (let i = 0; i < allData.length; i++) {
+          if (!isMounted) break;
           
-          if (snapshot.empty) {
-            hasMore = false;
-            break;
-          }
-
-          const doc = snapshot.docs[0];
-          lastVisible = doc;
-          const propertyData = { id: doc.id, ...doc.data() };
-
-          if (isMounted) {
-            setProperties(prev => {
-              // Prevent duplicates in strict mode
-              if (prev.find(p => p.id === propertyData.id)) return prev;
-              return [...prev, propertyData];
-            });
-            // Optional: slight delay to guarantee the visual cascading effect
-            await new Promise(resolve => setTimeout(resolve, 150)); 
-          }
+          setProperties(prev => {
+            if (prev.find(p => p.id === allData[i].id)) return prev;
+            return [...prev, allData[i]];
+          });
+          
+          // Tiny 80ms delay just for the beautiful animation
+          await new Promise(resolve => setTimeout(resolve, 80)); 
         }
+
       } catch (error) {
-        console.error("Error fetching properties sequentially:", error);
+        console.error("Error fetching properties:", error);
       } finally {
         if (isMounted) setLoading(false);
       }
     }
 
-    fetchSequentially();
+    fetchPropertiesFast();
 
     return () => { isMounted = false; };
   }, []);
