@@ -82,7 +82,7 @@ export function CoreServicesGrid() {
                 transition: { type: 'spring', stiffness: 400, damping: 25 }
               }}
               whileTap={{ scale: 0.96 }}
-              className="relative group overflow-hidden rounded-[1.5rem] bg-white/[0.02] border border-white/5 hover:border-gold-500/30 backdrop-blur-md p-8 flex flex-col items-start cursor-pointer h-full transition-colors duration-500"
+              className="relative group overflow-hidden rounded-[1.5rem] bg-white/[0.02] border border-white/[0.08] md:border-white/5 shadow-[0_0_15px_rgba(255,255,255,0.02)] md:shadow-none hover:border-gold-500/30 backdrop-blur-md p-8 flex flex-col items-start cursor-pointer h-full transition-all duration-500"
             >
               {/* Animated Gradient Background on Hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-[0.08] transition-opacity duration-500`} />
