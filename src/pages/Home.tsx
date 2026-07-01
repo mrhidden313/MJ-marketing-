@@ -582,7 +582,7 @@ export default function Home() {
                         } 
                       }
                     }}
-                    className="inline-block text-transparent bg-clip-text"
+                    className="inline-block text-transparent bg-clip-text pb-[0.15em]"
                     style={{ backgroundImage: 'linear-gradient(135deg, #e9c400 0%, #ffd700 50%, #c4a000 100%)' }}
                   >
                     {letter}
