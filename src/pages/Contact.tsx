@@ -20,7 +20,7 @@ const INFO = [
   { icon: Phone,         label: 'VIP Direct Line',    value: '+92 300 5522555',      href: 'tel:+923005522555' },
   { icon: MessageCircle, label: 'WhatsApp',           value: '+92 300 5522555',      href: 'https://wa.me/923005522555' },
   { icon: Mail,          label: 'Private Email',      value: 'jalilkhan0300@gmail.com', href: 'mailto:jalilkhan0300@gmail.com' },
-  { icon: MapPin,        label: 'Headquarters',       value: 'Ring Road, Peshawar',  href: '#' },
+  { icon: MapPin,        label: 'Headquarters',       value: 'Ring Road, Peshawar',  href: 'https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9' },
 ];
 
 const inputClass = "w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/30 focus:outline-none focus:border-transparent transition-colors font-light font-display";
@@ -158,11 +158,11 @@ export default function Contact() {
         <div className="absolute inset-0 bg-[#02040a] opacity-50 pointer-events-none z-10" />
         <FadeUp className="absolute top-10 left-1/2 -translate-x-1/2 z-20 liquid-glass px-8 py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
           <p className="text-white font-bold tracking-widest uppercase text-sm flex items-center gap-2">
-            <MapPin className="text-gold-500" size={18} /> Ring Road, Peshawar
+            <MapPin className="text-gold-500" size={18} /> MJ Marketing Office
           </p>
         </FadeUp>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105820.73812702959!2d71.45899479426462!3d33.9859508821034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917b90f0e79cf%3A0xa816b2637f8ce148!2sPeshawar%20Ring%20Rd%2C%20Peshawar%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+          src="https://maps.google.com/maps?q=33.963379,71.501152&t=m&z=15&output=embed&iwloc=near"
           width="100%"
           height="100%"
           style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(100%)' }}
