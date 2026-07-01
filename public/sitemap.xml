@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mjmarketing.com/</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://mjmarketingofficial.com/</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mjmarketing.com/properties</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://mjmarketingofficial.com/about</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mjmarketingofficial.com/properties</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mjmarketing.com/about</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mjmarketingofficial.com/projects</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mjmarketing.com/contact</loc>
-    <lastmod>2026-06-29</lastmod>
+    <loc>https://mjmarketingofficial.com/contact</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>
