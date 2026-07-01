@@ -725,7 +725,7 @@ export default function Home() {
             <InteractiveFolderGallery
               folderName="Projects & VIP Listings"
               dragHintText="Swipe left/right to browse. Pull down to close."
-              photos={properties.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image }))}
+              photos={properties.length > 0 ? properties.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image })) : undefined}
             />
           )}
         </motion.div>

@@ -58,7 +58,7 @@ export default function Projects() {
             <InteractiveFolderGallery
               folderName="Signature Projects"
               dragHintText="Drag any photo down to close"
-              photos={properties.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image }))}
+              photos={properties.length > 0 ? properties.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image })) : undefined}
             />
           )}
         </motion.div>
