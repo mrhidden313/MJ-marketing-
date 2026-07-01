@@ -13,7 +13,7 @@ const PAGES = [
 
 const CONTACT_INFO = [
   { Icon: Mail,   text: 'jalilkhan0300@gmail.com', href: 'mailto:jalilkhan0300@gmail.com', label: 'Email us' },
-  { Icon: MapPin, text: 'Ring Road, Pishtakhara Chowk', href: 'https://maps.google.com/?q=Ring+Road,+Pishtakhara+Chowk,+Peshawar', label: 'View on map' },
+  { Icon: MapPin, text: 'Ring Road, Pishtakhara Chowk', href: 'https://maps.app.goo.gl/zUqLBW5xnrjPhQcV9', label: 'View on map' },
 ];
 
 const SOCIALS = [

@@ -74,12 +74,9 @@ export default function About() {
 
           <FadeUp delay={0.2}>
             <div className="relative rounded-[2.5rem] overflow-hidden h-80 lg:h-[450px] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white/5 group">
-              <video
-                src="https://videos.pexels.com/video-files/3246830/3246830-hd_1920_1080_25fps.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src="/about.jpg"
+                alt="About MJ Marketing"
                 className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent" />
