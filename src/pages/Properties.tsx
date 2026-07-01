@@ -90,17 +90,27 @@ export default function Properties() {
 
       {/* ═══════════════════════════════ PREMIUM SEARCH BAR ════════════════════════════ */}
       <section className="px-6 lg:px-12 max-w-4xl mx-auto mb-16 relative z-40 -mt-10">
-        <div className="liquid-glass rounded-full p-2 pl-6 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-4 backdrop-blur-xl">
-          <Search size={22} className="text-gold-500 shrink-0" />
+        <div className="liquid-glass rounded-full p-2 pl-6 pr-2 md:pr-3 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-3 backdrop-blur-xl transition-all duration-300 focus-within:shadow-[0_20px_50px_rgba(233,196,0,0.15)] focus-within:border-gold-500/30">
           <input 
             type="text" 
-            placeholder="Search by property name, location, or type..." 
-            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-white/40 font-light text-lg"
+            placeholder="Search by property, location..." 
+            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-white/40 font-light text-base md:text-lg"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                // Search is real-time, but capturing Enter prevents form submission if wrapped in the future
+              }
+            }}
           />
-          <button className="btn-gold px-8 py-3 rounded-full shrink-0">
-            Search
+          <button 
+            type="button"
+            className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gold-500/10 hover:bg-gold-500 text-gold-500 hover:text-black flex items-center justify-center shrink-0 transition-all duration-300 shadow-[0_0_15px_rgba(233,196,0,0.15)] hover:shadow-[0_0_25px_rgba(233,196,0,0.4)] hover:scale-105 active:scale-95"
+            aria-label="Search"
+            onClick={(e) => e.preventDefault()}
+          >
+            <Search size={22} className="shrink-0" />
           </button>
         </div>
       </section>

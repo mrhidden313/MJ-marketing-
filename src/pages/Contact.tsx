@@ -165,14 +165,14 @@ export default function Contact() {
         </FadeUp>
 
         {/* Custom Premium "Open in Maps" Button Overlay */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
           <a 
             href="https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-black/60 backdrop-blur-xl border border-gold-500/50 text-white font-bold uppercase tracking-wider text-sm px-8 py-4 rounded-full shadow-[0_0_40px_rgba(233,196,0,0.2)] hover:shadow-[0_0_60px_rgba(233,196,0,0.4)] hover:bg-gold-500 hover:text-black hover:scale-105 transition-all duration-400 group-hover:-translate-y-2"
+            className="flex items-center justify-center gap-2 md:gap-3 bg-black/70 backdrop-blur-xl border border-gold-500/50 text-white font-bold uppercase tracking-widest text-[10px] md:text-sm px-5 py-2.5 md:px-8 md:py-4 rounded-full shadow-[0_0_30px_rgba(233,196,0,0.2)] hover:shadow-[0_0_60px_rgba(233,196,0,0.4)] hover:bg-gold-500 hover:text-black hover:scale-105 transition-all duration-400 group-hover:-translate-y-2 whitespace-nowrap"
           >
-            Open in Google Maps <ExternalLink size={18} className="shrink-0" />
+            Open in Google Maps <ExternalLink size={14} className="shrink-0 md:w-[18px] md:h-[18px]" />
           </a>
         </div>
 
