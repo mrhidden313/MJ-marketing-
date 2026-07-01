@@ -49,15 +49,15 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
       <div className={`pointer-events-auto transition-all duration-700 ease-in-out ${
-        scrolled ? 'py-0' : 'py-6'
+        scrolled || open ? 'py-0 md:py-0' : 'py-3 md:py-6'
       }`}>
         <div className={`mx-auto border transition-all duration-700 ease-in-out ${
-          scrolled
-            ? 'max-w-[800px] px-2 py-1.5 mt-2 rounded-[2.5rem] liquid-glass'
+          scrolled || open
+            ? 'max-w-[800px] px-2 py-1.5 mt-2 rounded-[2rem] liquid-glass bg-[#02040a]/95 shadow-2xl'
             : 'max-w-7xl px-4 lg:px-8 rounded-2xl bg-transparent border-transparent mt-0'
         }`}>
-          <div className={`flex items-center justify-between h-16 transition-all duration-700 ease-in-out ${
-            scrolled ? 'px-2' : 'px-4 md:px-12 lg:px-24'
+          <div className={`flex items-center justify-between h-14 md:h-16 transition-all duration-700 ease-in-out ${
+            scrolled || open ? 'px-2' : 'px-4 md:px-12 lg:px-24'
           }`}>
 
           {/* ── Logo — shrink & shift on scroll ── */}
@@ -155,24 +155,25 @@ export default function Navbar() {
         </div>
 
         {/* ── Mobile menu ── */}
-        <div className={`md:hidden overflow-hidden transition-all duration-400 ${open ? 'max-h-80 pb-4' : 'max-h-0'}`}>
-          <div className="flex flex-col gap-1 px-2 pt-2 border-t border-white/10">
+        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'}`}>
+          <div className="flex flex-col gap-1.5 px-4 pt-4 mt-2 border-t border-white/10">
             {NAV_LINKS.map(({ label, to }) => {
               const isActive = location.pathname === to;
               return (
                 <Link
                   key={to}
                   to={to}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-label font-600 uppercase tracking-wider transition-all ${
-                    isActive ? 'bg-gold-500/15 text-gold-400' : 'text-white/60 hover:text-white hover:bg-white/5'
+                  onClick={() => setOpen(false)}
+                  className={`px-4 py-3 rounded-xl text-sm font-label font-600 uppercase tracking-wider transition-all text-center ${
+                    isActive ? 'bg-gold-500/15 text-gold-400 border border-gold-500/20' : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
                   }`}
                 >
                   {label}
                 </Link>
               );
             })}
-            <a href="tel:+923005522555" className="btn-gold btn-call-ring mt-2 py-2.5 text-xs">
-              <Phone size={13} /> Call Now
+            <a href="tel:+923005522555" className="btn-gold btn-call-ring mt-3 py-3 text-sm flex justify-center">
+              <Phone size={14} className="mr-2" /> Call Now
             </a>
           </div>
         </div>

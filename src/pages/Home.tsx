@@ -536,9 +536,9 @@ export default function Home() {
         >
           {/* Badge chip */}
           <motion.div variants={heroItemVariants}>
-            <div className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse" />
-              <span className="text-gold-400 text-xs font-label font-600 uppercase tracking-widest">
+            <div className="inline-flex items-center justify-center gap-2 glass-gold rounded-full px-3 py-1.5 md:px-4 md:py-1.5 mb-6 md:mb-8 max-w-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse shrink-0" />
+              <span className="text-gold-400 text-[10px] sm:text-xs font-label font-600 uppercase tracking-widest text-center">
                 Peshawar's #1 Real Estate Agency
               </span>
             </div>
@@ -548,15 +548,15 @@ export default function Home() {
           {/* Main heading — Letter-by-Letter Staggered Spring Settle */}
           <motion.h1
             variants={{ show: { transition: { staggerChildren: 0.05 } } }}
-            className="flex flex-wrap gap-x-[3vw] gap-y-2 mb-5"
+            className="flex flex-wrap justify-center gap-x-[3vw] gap-y-0 md:gap-y-2 mb-3 md:mb-5"
             style={{
-              fontSize: 'clamp(3.5rem, 9vw, 7rem)',
+              fontSize: 'clamp(2.2rem, 11vw, 7rem)', // Lowered min size so it fits on mobile
               letterSpacing: '-0.04em',
               fontFamily: 'Inter',
               fontWeight: 900,
               paddingBottom: '0.3em',
               marginBottom: '-0.3em',
-              lineHeight: 1.15,
+              lineHeight: 1.1,
             }}
           >
             {['MJ', 'Marketing'].map((word, i) => (
@@ -606,10 +606,10 @@ export default function Home() {
           {/* Stats row — rotating gradient border + stagger left-to-right */}
           <motion.div
             variants={heroItemVariants}
-            className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12 mt-2"
+            className="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12 mt-2 px-2 md:px-0"
           >
             {STATS.map(({ end, suffix, label }, i) => (
-              <div key={label} className="stat-border-wrapper rounded-2xl p-[1px]">
+              <div key={label} className="stat-border-wrapper rounded-[1rem] md:rounded-2xl p-[1px]">
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -619,10 +619,10 @@ export default function Home() {
                     scale: 1.03,
                     transition: { type: 'spring', stiffness: 300, damping: 20 },
                   }}
-                  className="glass rounded-2xl px-4 py-5 text-center cursor-default h-full"
+                  className="glass rounded-[1rem] md:rounded-2xl px-2 py-3 md:px-4 md:py-5 text-center cursor-default h-full flex flex-col justify-center items-center"
                 >
                   <motion.p
-                    className="stat-number"
+                    className="stat-number text-2xl md:text-4xl"
                     whileHover={{
                       scale: [1, 1.15, 0.95, 1.05, 1],
                       transition: { duration: 0.4, times: [0, 0.2, 0.5, 0.7, 1] },
@@ -630,7 +630,7 @@ export default function Home() {
                   >
                     <AnimatedCounter end={end} suffix={suffix} />
                   </motion.p>
-                  <p className="text-white/50 text-xs font-label uppercase tracking-widest mt-2">{label}</p>
+                  <p className="text-white/50 text-[9px] md:text-xs font-label uppercase tracking-widest mt-1 md:mt-2 leading-tight">{label}</p>
                 </motion.div>
               </div>
             ))}
@@ -640,11 +640,11 @@ export default function Home() {
           {/* Buttons — below stats */}
           <motion.div
             variants={heroItemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0"
           >
             <Link
               to="/properties"
-              className="btn-gold group text-sm px-8 py-3.5"
+              className="btn-gold group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-full sm:w-auto flex justify-center items-center"
             >
               Explore Properties
               <motion.span
@@ -658,7 +658,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="btn-outline group text-sm px-8 py-3.5"
+              className="btn-outline group text-xs md:text-sm px-6 py-3 md:px-8 md:py-3.5 w-full sm:w-auto flex justify-center items-center"
             >
               Talk to an Agent
               <motion.span
