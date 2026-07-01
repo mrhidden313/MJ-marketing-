@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import SEO from '../components/SEO';
 import { motion, useScroll } from 'framer-motion';
 import { Award, Users, TrendingUp, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -38,6 +39,10 @@ export default function About() {
 
   return (
     <>
+      <SEO 
+        title="About Us | MJ Marketing" 
+        description="Since 2015, MJ Marketing has been redefining luxury real estate in Peshawar with unparalleled service, expertise, and exclusive market access."
+      />
       {/* Header */}
       <section className="pt-36 pb-16 px-6 lg:px-12 relative overflow-hidden"
         style={{ background: 'linear-gradient(180deg, rgba(233,196,0,0.06) 0%, transparent 100%)' }}

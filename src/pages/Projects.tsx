@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { InteractiveFolderGallery } from '../components/ui/interactive-folder-gallery';
 import { useProperties } from '../hooks/useProperties';
@@ -21,6 +22,10 @@ export default function Projects() {
 
   return (
     <div className="pt-32 pb-24 min-h-screen relative overflow-hidden">
+      <SEO 
+        title="VIP Real Estate Projects | MJ Marketing" 
+        description="Browse our master-planned communities and high-end residential developments. Secure your future in Peshawar's most elite projects."
+      />
       
       {/* Background glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
@@ -37,11 +42,11 @@ export default function Projects() {
               Our <span className="text-gold-gradient">Signature</span> Projects
             </h1>
           </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-white/60 text-lg leading-relaxed">
-              Explore our portfolio of high-end residential and commercial developments. Click the interactive folder below to browse through our master-planned communities.
-            </p>
-          </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                Explore our portfolio of high-end residential and commercial developments.
+              </p>
+            </FadeUp>
         </div>
 
         {/* Interactive folder gallery */}

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Search, MapPin, Map as MapIcon, SlidersHorizontal, ChevronRight, ChevronLeft } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
@@ -56,6 +57,10 @@ export default function Properties() {
 
   return (
     <div className="bg-[#02040a] min-h-screen">
+      <SEO 
+        title="Luxury Properties in Peshawar | MJ Marketing" 
+        description="Explore our hand-picked portfolio of exclusive properties in Peshawar. Find your dream home or next luxury investment with MJ Marketing."
+      />
       {/* ═══════════════════════════════ CINEMATIC HEADER ════════════════════════════ */}
       <section className="relative pt-40 pb-24 px-6 lg:px-12 overflow-hidden">
         {/* Abstract Cinematic Background */}

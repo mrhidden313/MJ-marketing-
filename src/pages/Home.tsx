@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import {
   motion,
   useScroll,
@@ -500,6 +501,10 @@ export default function Home() {
 
   return (
     <>
+      <SEO 
+        title="MJ Marketing | Peshawar's #1 Luxury Real Estate Agency" 
+        description="Discover Peshawar's most prestigious real estate. MJ Marketing offers exclusive access to luxury homes, VIP projects, and high-yield commercial investments."
+      />
       {/* ── Scroll Progress Bar ── */}
       <ScrollProgressBar />
 

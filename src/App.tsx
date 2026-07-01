@@ -228,24 +228,28 @@ function WhatsAppFAB() {
   );
 }
 
+import { HelmetProvider } from 'react-helmet-async';
+
 export default function App() {
   return (
-    <BrowserRouter>
-      {/* Global Background Layer */}
-      <div className="global-bg-mesh" />
-      
-      <div className="min-h-screen flex flex-col relative z-0 overflow-x-hidden">
-        <ScrollToTop />
-        <ScrollProgress />
-        <SoundEffects />
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-grow">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <WhatsAppFAB />
-      </div>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        {/* Global Background Layer */}
+        <div className="global-bg-mesh" />
+        
+        <div className="min-h-screen flex flex-col relative z-0 overflow-x-hidden">
+          <ScrollToTop />
+          <ScrollProgress />
+          <SoundEffects />
+          <CustomCursor />
+          <Navbar />
+          <main className="flex-grow">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+          <WhatsAppFAB />
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

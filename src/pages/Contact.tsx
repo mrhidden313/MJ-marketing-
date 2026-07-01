@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle, Clock, ArrowRight, ExternalLink } from 'lucide-react';
 
@@ -37,6 +38,10 @@ export default function Contact() {
 
   return (
     <>
+      <SEO 
+        title="Contact Us | MJ Marketing" 
+        description="Get in touch with Peshawar's leading real estate experts. Our team is ready to assist you with secure investments and luxury property acquisitions."
+      />
       {/* Cinematic Header */}
       <section className="relative pt-40 pb-20 px-6 lg:px-12 overflow-hidden bg-[#02040a]">
         <div className="absolute top-0 right-0 w-[80%] h-full bg-gold-500/5 blur-[120px] pointer-events-none" />
@@ -144,7 +149,7 @@ export default function Contact() {
                 </div>
                 
                 <button type="submit" className="btn-gold w-full text-base py-4 flex items-center justify-center gap-2 group mt-4">
-                  Send Secure Request <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  Send Message <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
             </div>
