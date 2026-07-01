@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, MessageCircle, Clock, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, Clock, ArrowRight, ExternalLink } from 'lucide-react';
 
 function FadeUp({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
@@ -154,13 +154,28 @@ export default function Contact() {
       </section>
 
       {/* ═══════════════════════════════ PREMIUM MAP SECTION ════════════════════════════ */}
-      <section className="relative h-[500px] w-full mt-20">
+      <section className="relative h-[500px] w-full mt-20 group">
         <div className="absolute inset-0 bg-[#02040a] opacity-50 pointer-events-none z-10" />
-        <FadeUp className="absolute top-10 left-1/2 -translate-x-1/2 z-20 liquid-glass px-8 py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+        
+        {/* Top Floating Badge */}
+        <FadeUp className="absolute top-10 left-1/2 -translate-x-1/2 z-20 liquid-glass px-8 py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] pointer-events-none">
           <p className="text-white font-bold tracking-widest uppercase text-sm flex items-center gap-2">
             <MapPin className="text-gold-500" size={18} /> MJ Marketing Office
           </p>
         </FadeUp>
+
+        {/* Custom Premium "Open in Maps" Button Overlay */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
+          <a 
+            href="https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-black/60 backdrop-blur-xl border border-gold-500/50 text-white font-bold uppercase tracking-wider text-sm px-8 py-4 rounded-full shadow-[0_0_40px_rgba(233,196,0,0.2)] hover:shadow-[0_0_60px_rgba(233,196,0,0.4)] hover:bg-gold-500 hover:text-black hover:scale-105 transition-all duration-400 group-hover:-translate-y-2"
+          >
+            Open in Google Maps <ExternalLink size={18} className="shrink-0" />
+          </a>
+        </div>
+
         <iframe
           src="https://maps.google.com/maps?q=33.963379,71.501152&t=m&z=15&output=embed&iwloc=near"
           width="100%"
