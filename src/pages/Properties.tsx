@@ -22,6 +22,24 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
   );
 }
 
+const SkeletonCard = () => (
+  <div className="rounded-[2rem] overflow-hidden liquid-glass border border-white/5 h-[450px] animate-pulse flex flex-col">
+    <div className="w-full h-[240px] bg-white/5" />
+    <div className="p-6 flex flex-col flex-1">
+      <div className="w-24 h-6 bg-gold-500/20 rounded-full mb-4" />
+      <div className="w-3/4 h-8 bg-white/10 rounded-md mb-3" />
+      <div className="w-1/2 h-4 bg-white/5 rounded-md mb-6" />
+      
+      <div className="flex gap-4 mb-auto">
+        <div className="w-16 h-5 bg-white/5 rounded-md" />
+        <div className="w-16 h-5 bg-white/5 rounded-md" />
+        <div className="w-16 h-5 bg-white/5 rounded-md" />
+      </div>
+      <div className="w-1/3 h-8 bg-white/10 rounded-md mt-6" />
+    </div>
+  </div>
+);
+
 export default function Properties() {
   const [searchQuery, setSearchQuery] = useState('');
   const { properties, loading } = useProperties();
@@ -91,22 +109,37 @@ export default function Properties() {
       <div className="px-6 lg:px-12 max-w-[1400px] mx-auto pb-32">
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => (
-              <motion.div
-                key={p.id}
-                layout
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <PropertyCard p={p} />
-              </motion.div>
-            ))}
+            {loading ? (
+              // Show 8 skeleton cards while fetching from database
+              [...Array(8)].map((_, i) => (
+                <motion.div
+                  key={`skeleton-${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <SkeletonCard />
+                </motion.div>
+              ))
+            ) : (
+              filtered.map((p, i) => (
+                <motion.div
+                  key={p.id}
+                  layout
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <PropertyCard p={p} />
+                </motion.div>
+              ))
+            )}
           </AnimatePresence>
         </motion.div>
 
-        {filtered.length === 0 && (
+        {!loading && filtered.length === 0 && (
           <div className="text-center py-32 liquid-glass rounded-3xl mt-10 border border-white/5">
             <Search size={40} className="mx-auto text-white/20 mb-4" />
             <p className="text-white/40 text-xl font-display font-light">No properties match your exact search.</p>
