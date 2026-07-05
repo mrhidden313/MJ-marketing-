@@ -13,7 +13,7 @@ interface SEOProps {
 export default function SEO({ 
   title, 
   description, 
-  name = "MJ Marketing", 
+  name = "MJ GROUP OF COMPANIES", 
   type = "website", 
   image = "https://mjmarketing.com.pk/logo.png", // Ensure this points to a valid absolute URL in production
   url = "https://mjmarketing.com.pk"

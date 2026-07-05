@@ -502,8 +502,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="MJ Marketing | Peshawar's #1 Luxury Real Estate Agency" 
-        description="Discover Peshawar's most prestigious real estate. MJ Marketing offers exclusive access to luxury homes, VIP projects, and high-yield commercial investments."
+        title="MJ GROUP OF COMPANIES | Peshawar's #1 Luxury Real Estate Agency" 
+        description="Discover Peshawar's most prestigious real estate. MJ GROUP OF COMPANIES offers exclusive access to luxury homes, VIP projects, and high-yield commercial investments."
       />
       {/* ── Scroll Progress Bar ── */}
       <ScrollProgressBar />
@@ -564,7 +564,7 @@ export default function Home() {
               lineHeight: 1.1,
             }}
           >
-            {['MJ', 'Marketing'].map((word, i) => (
+            {['MJ', 'GROUP', 'OF', 'COMPANIES'].map((word, i) => (
               <span key={i} className="inline-flex whitespace-nowrap">
                 {word.split('').map((letter, j) => (
                   <motion.span
@@ -828,7 +828,7 @@ export default function Home() {
                 Trusted by <br/><span className="text-gold-gradient">Peshawar's Elite</span>
               </h2>
               <p className="text-white/50 text-lg leading-relaxed max-w-md">
-                Our reputation is built on the success and satisfaction of our VIP clients. Hear what they have to say about the MJ Marketing experience.
+                Our reputation is built on the success and satisfaction of our VIP clients. Hear what they have to say about the MJ GROUP OF COMPANIES experience.
               </p>
             </motion.div>
 
@@ -846,7 +846,7 @@ export default function Home() {
               </div>
 
               <blockquote className="text-white font-medium text-xl md:text-[1.35rem] leading-relaxed mb-10 font-body relative z-10">
-                "MJ Marketing found us our dream villa in T.V Colony within 3 weeks. Their market knowledge, transparency, and VIP professionalism is truly unmatched in Peshawar."
+                "MJ GROUP OF COMPANIES found us our dream villa in T.V Colony within 3 weeks. Their market knowledge, transparency, and VIP professionalism is truly unmatched in Peshawar."
               </blockquote>
 
               <div className="flex items-center gap-5 relative z-10">

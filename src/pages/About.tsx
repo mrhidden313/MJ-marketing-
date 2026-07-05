@@ -21,7 +21,7 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
 }
 
 const MILESTONES = [
-  { year: '2015', event: 'MJ Marketing founded by Abdul Jalil in Peshawar' },
+  { year: '2015', event: 'MJ GROUP OF COMPANIES founded by Abdul Jalil in Peshawar' },
   { year: '2018', event: '200+ transactions milestone reached in Hayatabad & Cantt' },
   { year: '2021', event: 'Commercial division & Investment Advisory launched' },
   { year: '2024', event: '500+ premium properties sold across KPK' },
@@ -40,8 +40,8 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="About Us | MJ Marketing" 
-        description="Since 2015, MJ Marketing has been redefining luxury real estate in Peshawar with unparalleled service, expertise, and exclusive market access."
+        title="About Us | MJ GROUP OF COMPANIES" 
+        description="Since 2015, MJ GROUP OF COMPANIES has been redefining luxury real estate in Peshawar with unparalleled service, expertise, and exclusive market access."
       />
       {/* Header */}
       <section className="pt-36 pb-16 px-6 lg:px-12 relative overflow-hidden"
@@ -57,7 +57,7 @@ export default function About() {
             </FadeUp>
             <FadeUp delay={0.2}>
               <p className="text-white/50 leading-relaxed mb-4">
-                Founded in 2012, MJ Marketing has been at the forefront of Peshawar's evolving real estate market.
+                Founded in 2012, MJ GROUP OF COMPANIES has been at the forefront of Peshawar's evolving real estate market.
                 We began as a small family-run agency in T.V Colony and have grown into one of the city's most respected names.
               </p>
               <p className="text-white/50 leading-relaxed">
@@ -76,13 +76,13 @@ export default function About() {
             <div className="relative rounded-[2.5rem] overflow-hidden h-80 lg:h-[450px] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white/5 group">
               <img
                 src="/about.jpg"
-                alt="About MJ Marketing"
+                alt="About MJ GROUP OF COMPANIES"
                 className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent" />
               <div className="absolute bottom-8 left-8 liquid-glass border border-white/10 rounded-2xl px-6 py-4 backdrop-blur-md">
                 <p className="text-gold-400 font-display font-800 text-2xl tracking-tight">Est. 2012</p>
-                <p className="text-white/60 text-xs uppercase tracking-widest font-bold mt-1">T.V Colony, Peshawar</p>
+                <p className="text-white/60 text-xs uppercase tracking-widest font-bold mt-1">Ring Road , Pishtakhara Chowk , Peshawar</p>
               </div>
             </div>
           </FadeUp>
@@ -92,7 +92,7 @@ export default function About() {
       {/* ═══════════════════════════════ LUXURY PSYCHOLOGY CARDS ════════════════════════════ */}
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <FadeUp className="text-center mb-16">
-          <span className="section-label justify-center mb-4 block">Why MJ Marketing</span>
+          <span className="section-label justify-center mb-4 block">Why MJ GROUP OF COMPANIES</span>
           <h2 className="font-display font-800 text-display-md text-white">
             The Standard of <span className="text-gold-gradient">Excellence</span>
           </h2>

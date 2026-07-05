@@ -21,7 +21,7 @@ const INFO = [
   { icon: Phone,         label: 'VIP Direct Line',    value: '+92 300 5522555',      href: 'tel:+923005522555' },
   { icon: MessageCircle, label: 'WhatsApp',           value: '+92 300 5522555',      href: 'https://wa.me/923005522555' },
   { icon: Mail,          label: 'Private Email',      value: 'jalilkhan0300@gmail.com', href: 'mailto:jalilkhan0300@gmail.com' },
-  { icon: MapPin,        label: 'Headquarters',       value: 'Ring Road, Peshawar',  href: 'https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9' },
+  { icon: MapPin,        label: 'Headquarters',       value: 'Ring Road , Pishtakhara Chowk , Peshawar',  href: 'https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9' },
 ];
 
 const inputClass = "w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/30 focus:outline-none focus:border-transparent transition-colors font-light font-display";
@@ -39,7 +39,7 @@ export default function Contact() {
   return (
     <>
       <SEO 
-        title="Contact Us | MJ Marketing" 
+        title="Contact Us | MJ GROUP OF COMPANIES" 
         description="Get in touch with Peshawar's leading real estate experts. Our team is ready to assist you with secure investments and luxury property acquisitions."
       />
       {/* Cinematic Header */}
@@ -166,7 +166,7 @@ export default function Contact() {
         <div className="absolute top-10 left-0 w-full flex justify-center z-20 pointer-events-none">
           <FadeUp className="liquid-glass px-6 py-3 md:px-8 md:py-4 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
             <p className="text-white font-bold tracking-widest uppercase text-[10px] md:text-sm flex items-center gap-2">
-              <MapPin className="text-gold-500" size={16} /> MJ Marketing Office
+              <MapPin className="text-gold-500" size={16} /> MJ GROUP OF COMPANIES Office
             </p>
           </FadeUp>
         </div>

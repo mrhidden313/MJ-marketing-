@@ -4,7 +4,7 @@ export const PROPERTIES: Property[] = [
   {
     id: '1',
     title: 'Luxury Villa in T.V Colony',
-    location: 'Sector E, T.V Colony, Peshawar',
+    location: 'Sector E, Ring Road , Pishtakhara Chowk , Peshawar',
     price: 'Rs 12.5 Crore',
     beds: 5, baths: 6, area: '1 Kanal',
     type: 'House',
@@ -52,7 +52,7 @@ export const PROPERTIES: Property[] = [
   {
     id: '6',
     title: 'Corner Commercial Plot',
-    location: 'Ring Road, Peshawar',
+    location: 'Ring Road , Pishtakhara Chowk , Peshawar',
     price: 'Rs 14 Crore',
     area: '4 Kanal',
     type: 'Plot',

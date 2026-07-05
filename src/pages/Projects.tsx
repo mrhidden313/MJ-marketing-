@@ -23,7 +23,7 @@ export default function Projects() {
   return (
     <div className="pt-32 pb-24 min-h-screen relative overflow-hidden">
       <SEO 
-        title="VIP Real Estate Projects | MJ Marketing" 
+        title="VIP Real Estate Projects | MJ GROUP OF COMPANIES" 
         description="Browse our master-planned communities and high-end residential developments. Secure your future in Peshawar's most elite projects."
       />
       

@@ -6,8 +6,8 @@ export default function Terms() {
   return (
     <div className="pt-32 pb-20 px-4 sm:px-8 max-w-4xl mx-auto">
       <Helmet>
-        <title>Terms of Service | MJ Marketing</title>
-        <meta name="description" content="Terms of Service for MJ Marketing." />
+        <title>Terms of Service | MJ GROUP OF COMPANIES</title>
+        <meta name="description" content="Terms of Service for MJ GROUP OF COMPANIES." />
       </Helmet>
       
       <motion.div
@@ -34,8 +34,8 @@ export default function Terms() {
         <h2 className="text-2xl font-bold text-gold-400 mt-8 mb-4">5. Contact Us</h2>
         <p className="mb-4">In order to resolve a complaint regarding the website or to receive further information regarding use of the website, please contact us at:</p>
         <p className="mb-4">
-          <strong>MJ Marketing</strong><br/>
-          T.V Colony Swati Phattak, Peshawar Cantt, Peshawar<br/>
+          <strong>MJ GROUP OF COMPANIES</strong><br/>
+          Ring Road , Pishtakhara Chowk , Peshawar<br/>
           Email: info@mjmarketingofficial.com
         </p>
       </motion.div>

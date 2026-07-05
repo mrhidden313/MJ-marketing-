@@ -58,8 +58,8 @@ export default function Properties() {
   return (
     <div className="bg-[#02040a] min-h-screen">
       <SEO 
-        title="Luxury Properties in Peshawar | MJ Marketing" 
-        description="Explore our hand-picked portfolio of exclusive properties in Peshawar. Find your dream home or next luxury investment with MJ Marketing."
+        title="Luxury Properties in Peshawar | MJ GROUP OF COMPANIES" 
+        description="Explore our hand-picked portfolio of exclusive properties in Peshawar. Find your dream home or next luxury investment with MJ GROUP OF COMPANIES."
       />
       {/* ═══════════════════════════════ CINEMATIC HEADER ════════════════════════════ */}
       <section className="relative pt-40 pb-24 px-6 lg:px-12 overflow-hidden">

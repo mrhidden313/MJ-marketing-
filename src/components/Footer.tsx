@@ -13,7 +13,7 @@ const PAGES = [
 
 const CONTACT_INFO = [
   { Icon: Mail,   text: 'jalilkhan0300@gmail.com', href: 'mailto:jalilkhan0300@gmail.com', label: 'Email us' },
-  { Icon: MapPin, text: 'Ring Road, Pishtakhara Chowk', href: 'https://maps.app.goo.gl/zUqLBW5xnrjPhQcV9', label: 'View on map' },
+  { Icon: MapPin, text: 'Ring Road , Pishtakhara Chowk , Peshawar', href: 'https://maps.app.goo.gl/zUqLBW5xnrjPhQcV9', label: 'View on map' },
 ];
 
 const SOCIALS = [
@@ -112,7 +112,7 @@ export default function Footer() {
         {/* Giant Watermark Background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] select-none">
           <span className="text-[12rem] md:text-[22rem] font-900 font-display text-white whitespace-nowrap leading-none tracking-tighter">
-            MJ MARKETING
+            MJ GROUP OF COMPANIES
           </span>
         </div>
 
@@ -120,7 +120,7 @@ export default function Footer() {
           
           {/* Left: Brand (Spans 5 cols) */}
           <motion.div className="md:col-span-12 lg:col-span-5 flex flex-col items-start" variants={listVariants} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <motion.img variants={linkItemVariant} src="/logo.png" alt="MJ Marketing" className="hidden md:block w-20 h-20 rounded-full bg-white p-2 object-contain mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10" />
+            <motion.img variants={linkItemVariant} src="/logo.png" alt="MJ GROUP OF COMPANIES" className="hidden md:block w-20 h-20 rounded-full bg-white p-2 object-contain mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10" />
             
             <motion.p variants={linkItemVariant} className="text-white/60 text-base leading-relaxed mb-10 font-light" style={{ fontFamily: 'Inter', maxWidth: '380px' }}>
               Redefining luxury real estate in Peshawar. We offer exclusive access to the city's most prestigious properties, with unparalleled service and expertise since 2015.
@@ -237,7 +237,7 @@ export default function Footer() {
         {/* Bottom Bar inside the card */}
         <div className="relative z-10 border-t border-white/10 px-8 py-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 bg-black/30 backdrop-blur-xl text-sm text-white/50">
           <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
-            <p>&copy; {new Date().getFullYear()} MJ Marketing. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} MJ GROUP OF COMPANIES. All rights reserved.</p>
             <p className="text-xs text-white/40">Proprietor: ABDUL JALIL | FBR NTN: 2120137279249 | REA: 5781/2024-2025</p>
           </div>
           <div className="flex gap-6">

@@ -6,8 +6,8 @@ export default function Privacy() {
   return (
     <div className="pt-32 pb-20 px-4 sm:px-8 max-w-4xl mx-auto">
       <Helmet>
-        <title>Privacy Policy | MJ Marketing</title>
-        <meta name="description" content="Privacy Policy for MJ Marketing." />
+        <title>Privacy Policy | MJ GROUP OF COMPANIES</title>
+        <meta name="description" content="Privacy Policy for MJ GROUP OF COMPANIES." />
       </Helmet>
       
       <motion.div
@@ -20,7 +20,7 @@ export default function Privacy() {
         <p className="mb-4">Last updated: July 2026</p>
         
         <h2 className="text-2xl font-bold text-gold-400 mt-8 mb-4">1. Introduction</h2>
-        <p className="mb-4">Welcome to MJ Marketing. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+        <p className="mb-4">Welcome to MJ GROUP OF COMPANIES. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
 
         <h2 className="text-2xl font-bold text-gold-400 mt-8 mb-4">2. The Data We Collect</h2>
         <p className="mb-4">We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
@@ -44,8 +44,8 @@ export default function Privacy() {
         <h2 className="text-2xl font-bold text-gold-400 mt-8 mb-4">5. Contact Us</h2>
         <p className="mb-4">If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
         <p className="mb-4">
-          <strong>MJ Marketing</strong><br/>
-          T.V Colony Swati Phattak, Peshawar Cantt, Peshawar<br/>
+          <strong>MJ GROUP OF COMPANIES</strong><br/>
+          Ring Road , Pishtakhara Chowk , Peshawar<br/>
           Email: info@mjmarketingofficial.com
         </p>
       </motion.div>

@@ -83,7 +83,7 @@ export default function Navbar() {
             >
               <img
                 src="/logo.png"
-                alt="MJ Marketing"
+                alt="MJ GROUP OF COMPANIES"
                 className="object-contain transition-all duration-700 ease-in-out"
                 style={{
                   width: scrolled ? '24px' : '34px',
@@ -104,7 +104,7 @@ export default function Navbar() {
                 className="md:hidden flex-1 flex justify-center pointer-events-none"
               >
                 <span className="text-gold-400 font-display font-bold text-lg tracking-widest uppercase" style={{ textShadow: '0 0 15px rgba(233,196,0,0.3)' }}>
-                  MJ Marketing
+                  MJ GROUP OF COMPANIES
                 </span>
               </motion.div>
             )}
