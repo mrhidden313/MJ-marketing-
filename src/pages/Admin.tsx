@@ -74,9 +74,31 @@ export default function Admin() {
   const handleSaveProperty = async (e: React.FormEvent) => {
     e.preventDefault();
     const id = currentProperty.id || Date.now().toString();
-    await supabase.from('properties').upsert({ ...currentProperty, id });
-    setIsEditing(false);
-    window.location.reload();
+    const payload = {
+      id,
+      title: currentProperty.title || '',
+      location: currentProperty.location || '',
+      price: currentProperty.price || '',
+      type: currentProperty.type || 'House',
+      image: currentProperty.image || '',
+      beds: currentProperty.beds || '',
+      baths: currentProperty.baths || '',
+      sqft: currentProperty.area || '',
+      status: currentProperty.tag || ''
+    };
+    
+    try {
+      const { error } = await supabase.from('properties').upsert(payload);
+      if (error) {
+        console.error("Error saving property:", error);
+        alert("Error saving property: " + error.message);
+        return;
+      }
+      setIsEditing(false);
+      window.location.reload();
+    } catch (err: any) {
+      alert("Error saving property: " + err.message);
+    }
   };
 
   const handleDeleteTeam = async (id: string) => {

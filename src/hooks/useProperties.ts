@@ -16,13 +16,20 @@ export function useProperties() {
         const { data: allData, error } = await supabase.from('properties').select('*');
         if (error) throw error;
         
+        const mappedData = (allData || []).map(p => ({
+          ...p,
+          area: p.sqft || p.area || '',
+          tag: p.status || p.tag || '',
+          tagColor: 'gold'
+        }));
+        
         // 2. Visually load them one by one (Waterfall effect) without network lag
-        for (let i = 0; i < allData.length; i++) {
+        for (let i = 0; i < mappedData.length; i++) {
           if (!isMounted) break;
           
           setProperties(prev => {
-            if (prev.find(p => p.id === allData[i].id)) return prev;
-            return [...prev, allData[i]];
+            if (prev.find(p => p.id === mappedData[i].id)) return prev;
+            return [...prev, mappedData[i]];
           });
           
           // Tiny 80ms delay just for the beautiful animation
