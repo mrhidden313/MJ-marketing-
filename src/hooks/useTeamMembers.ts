@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { supabase } from '../lib/supabase';
 import type { TeamMember } from '../components/ui/team-section';
 
 export function useTeamMembers() {
@@ -8,22 +7,18 @@ export function useTeamMembers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Real-time listener for immediate updates
-    const unsubscribe = onSnapshot(collection(db, "team_members"), (snapshot) => {
-      const data = snapshot.docs.map(doc => ({ 
-        id: doc.id, 
-        ...doc.data() 
-      })) as (TeamMember & { id: string })[];
-      
-      // Sort members (you can add a 'order' field later if needed, right now we just use them as they come)
-      setMembers(data);
-      setLoading(false);
-    }, (error) => {
-      console.error("Error fetching team members:", error);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    async function fetchMembers() {
+      try {
+        const { data, error } = await supabase.from('team_members').select('*');
+        if (error) throw error;
+        setMembers(data as (TeamMember & { id: string })[]);
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMembers();
   }, []);
 
   return { members, loading };

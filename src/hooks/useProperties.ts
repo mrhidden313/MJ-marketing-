@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { supabase } from '../lib/supabase';
 
 export function useProperties() {
   const [properties, setProperties] = useState<any[]>([]);
@@ -14,8 +13,8 @@ export function useProperties() {
         setLoading(true);
         
         // 1. Fetch EVERYTHING instantly in one ultra-fast request
-        const querySnapshot = await getDocs(collection(db, "properties"));
-        const allData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const { data: allData, error } = await supabase.from('properties').select('*');
+        if (error) throw error;
         
         // 2. Visually load them one by one (Waterfall effect) without network lag
         for (let i = 0; i < allData.length; i++) {

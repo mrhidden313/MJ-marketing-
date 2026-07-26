@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { useProperties } from '../hooks/useProperties';
 import { useTeamMembers } from '../hooks/useTeamMembers';
-import { db, auth, storage } from '../lib/firebase';
-import { doc, deleteDoc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { supabase } from '../lib/supabase';
 import imageCompression from 'browser-image-compression';
-import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Trash2, Edit2, Plus, LogOut, Users, Home as HomeIcon } from 'lucide-react';
 
@@ -41,10 +38,13 @@ export default function Admin() {
       };
       
       const compressedFile = await imageCompression(file, options);
+      const fileName = `${Date.now()}_${compressedFile.name}`;
       
-      const storageRef = ref(storage, `images/${Date.now()}_${compressedFile.name}`);
-      await uploadBytes(storageRef, compressedFile);
-      const url = await getDownloadURL(storageRef);
+      const { error: uploadError } = await supabase.storage.from('images').upload(fileName, compressedFile);
+      if (uploadError) throw uploadError;
+      
+      const { data: { publicUrl } } = supabase.storage.from('images').getPublicUrl(fileName);
+      const url = publicUrl;
       
       if (type === 'property') {
         setCurrentProperty({ ...currentProperty, image: url });
@@ -60,13 +60,13 @@ export default function Admin() {
   };
 
   const handleLogout = async () => {
-    await signOut(auth);
+    await supabase.auth.signOut();
     navigate('/login');
   };
 
   const handleDeleteProperty = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this property?')) {
-      await deleteDoc(doc(db, "properties", id));
+      await supabase.from('properties').delete().eq('id', id);
       window.location.reload();
     }
   };
@@ -74,22 +74,24 @@ export default function Admin() {
   const handleSaveProperty = async (e: React.FormEvent) => {
     e.preventDefault();
     const id = currentProperty.id || Date.now().toString();
-    await setDoc(doc(db, "properties", id), { ...currentProperty, id });
+    await supabase.from('properties').upsert({ ...currentProperty, id });
     setIsEditing(false);
     window.location.reload();
   };
 
   const handleDeleteTeam = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this team member?')) {
-      await deleteDoc(doc(db, "team_members", id));
+      await supabase.from('team_members').delete().eq('id', id);
+      window.location.reload();
     }
   };
 
   const handleSaveTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     const id = currentTeam.id || Date.now().toString();
-    await setDoc(doc(db, "team_members", id), { ...currentTeam, id });
+    await supabase.from('team_members').upsert({ ...currentTeam, id });
     setIsEditingTeam(false);
+    window.location.reload();
   };
 
   return (
