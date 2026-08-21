@@ -20,7 +20,8 @@ export function useProperties() {
           ...p,
           area: p.sqft || p.area || '',
           tag: p.status || p.tag || '',
-          tagColor: 'gold'
+          tagColor: 'gold',
+          video_url: p.video_url || ''
         }));
         
         // 2. Visually load them one by one (Waterfall effect) without network lag

@@ -62,6 +62,7 @@ function TiltWrapper({ children }: { children: React.ReactNode }) {
 
 export default function PropertyCard({ p }: { p: Property }) {
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isVideoFullscreen, setIsVideoFullscreen] = useState(false);
 
   return (
     <>
@@ -75,7 +76,7 @@ export default function PropertyCard({ p }: { p: Property }) {
             onClick={() => setIsFullscreen(false)}
           >
             <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+              className="absolute top-6 right-6 text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors z-50"
               onClick={(e) => { e.stopPropagation(); setIsFullscreen(false); }}
             >
               <X size={24} />
@@ -91,10 +92,37 @@ export default function PropertyCard({ p }: { p: Property }) {
             />
           </motion.div>
         )}
+        
+        {isVideoFullscreen && p.video_url && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+            onClick={() => setIsVideoFullscreen(false)}
+          >
+            <button
+              className="absolute top-6 right-6 text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors z-50"
+              onClick={(e) => { e.stopPropagation(); setIsVideoFullscreen(false); }}
+            >
+              <X size={24} />
+            </button>
+            <motion.video
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={p.video_url}
+              controls
+              autoPlay
+              className="w-full max-w-4xl max-h-[80vh] rounded-2xl border border-white/10 shadow-2xl bg-black"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
       </AnimatePresence>
 
       <TiltWrapper>
-        <article className="property-card rounded-2xl overflow-hidden group border border-white/[0.06] md:border-transparent bg-white/[0.01] md:bg-transparent shadow-[0_0_15px_rgba(255,255,255,0.02)] md:shadow-none transition-colors">
+        <article className="property-card rounded-2xl overflow-hidden group border border-white/[0.06] md:border-transparent bg-white/[0.01] md:bg-transparent shadow-[0_0_15px_rgba(255,255,255,0.02)] md:shadow-none transition-colors relative">
           {/* Image */}
           <div
             className="relative h-60 overflow-hidden cursor-pointer"
@@ -121,17 +149,19 @@ export default function PropertyCard({ p }: { p: Property }) {
             {/* Quick Glance Overlay (Slide up on hover) */}
             <div className="absolute inset-0 bg-[#02040a]/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3 translate-y-8 group-hover:translate-y-0 z-20">
               <button
-                onClick={(e) => { e.preventDefault(); setIsFullscreen(true); }}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsFullscreen(true); }}
                 className="w-[80%] bg-white/10 hover:bg-gold-500 hover:text-black text-white border border-white/20 hover:border-gold-500 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
               >
                 Quick View
               </button>
-              <Link
-                to="/"
-                className="w-[80%] text-center bg-white/5 hover:bg-white/20 text-white/80 border border-white/10 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
-              >
-                Video Tour
-              </Link>
+              {p.video_url && (
+                <button
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsVideoFullscreen(true); }}
+                  className="w-[80%] text-center bg-white/5 hover:bg-white/20 text-white/80 border border-white/10 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
+                >
+                  Video Tour
+                </button>
+              )}
             </div>
           </div>
 
@@ -141,12 +171,29 @@ export default function PropertyCard({ p }: { p: Property }) {
               {p.title}
             </h3>
 
-            <Link
-              to={`/properties/${p.id}`}
-              className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 text-xs font-label font-600 uppercase tracking-widest hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300"
-            >
-              View Details
-            </Link>
+            <div className="mt-4 flex items-center justify-between text-white/60 text-sm">
+              <span className="text-gold-400 font-bold">{p.price}</span>
+              <span className="truncate max-w-[50%]">{p.location}</span>
+            </div>
+            
+            {p.video_url && (
+              <button
+                onClick={(e) => { e.preventDefault(); setIsVideoFullscreen(true); }}
+                className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 text-xs font-label font-600 uppercase tracking-widest hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300"
+              >
+                Watch Video
+              </button>
+            )}
+            
+            {!p.video_url && (
+              <Link
+                to={`/properties`}
+                className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 text-xs font-label font-600 uppercase tracking-widest hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300 opacity-50 cursor-not-allowed"
+                onClick={(e) => e.preventDefault()}
+              >
+                No Video Available
+              </Link>
+            )}
           </div>
         </article>
       </TiltWrapper>

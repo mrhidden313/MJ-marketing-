@@ -10,4 +10,5 @@ export interface Property {
   tag?:       string;
   tagColor?:  'gold' | 'red';
   image:      string;
+  video_url?: string;
 }

@@ -15,7 +15,7 @@ export default function Admin() {
   
   const [isEditing, setIsEditing] = useState(false);
   const [currentProperty, setCurrentProperty] = useState<any>({
-    id: '', title: '', location: '', price: '', type: 'House', image: '', beds: '', baths: '', area: '', tag: '', tagColor: ''
+    id: '', title: '', location: '', price: '', type: 'House', image: '', video_url: '', beds: '', baths: '', area: '', tag: '', tagColor: ''
   });
   
   const [isEditingTeam, setIsEditingTeam] = useState(false);
@@ -59,6 +59,33 @@ export default function Admin() {
     }
   };
 
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    let file = e.target.files?.[0];
+    if (!file) return;
+    
+    // Size check: limit to ~50MB (50 * 1024 * 1024 bytes)
+    if (file.size > 50 * 1024 * 1024) {
+      alert("Video file is too large. Please upload a video smaller than 50MB.");
+      return;
+    }
+    
+    setUploading(true);
+    try {
+      const fileName = `${Date.now()}_${file.name}`;
+      
+      const { error: uploadError } = await supabase.storage.from('images').upload(fileName, file);
+      if (uploadError) throw uploadError;
+      
+      const { data: { publicUrl } } = supabase.storage.from('images').getPublicUrl(fileName);
+      setCurrentProperty({ ...currentProperty, video_url: publicUrl });
+    } catch (error) {
+      console.error("Error uploading video: ", error);
+      alert("Failed to upload video.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate('/login');
@@ -81,6 +108,7 @@ export default function Admin() {
       price: currentProperty.price || '',
       type: currentProperty.type || 'House',
       image: currentProperty.image || '',
+      video_url: currentProperty.video_url || '',
       beds: currentProperty.beds || '',
       baths: currentProperty.baths || '',
       sqft: currentProperty.area || '',
@@ -180,6 +208,16 @@ export default function Admin() {
                     <input required type="text" value={currentProperty.image} onChange={e => setCurrentProperty({...currentProperty, image: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" placeholder="https://..." />
                   </div>
                 </div>
+                <div className="col-span-2">
+                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Video URL (or Upload)</label>
+                  <div className="flex gap-2">
+                    <input type="file" accept="video/*" onChange={handleVideoUpload} disabled={uploading} className="hidden" id="prop-video-upload" />
+                    <label htmlFor="prop-video-upload" className="bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg cursor-pointer flex items-center justify-center whitespace-nowrap border border-white/10">
+                      {uploading ? 'Uploading...' : 'Upload Video'}
+                    </label>
+                    <input type="text" value={currentProperty.video_url || ''} onChange={e => setCurrentProperty({...currentProperty, video_url: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" placeholder="https://... (Optional)" />
+                  </div>
+                </div>
                 <div className="col-span-2 flex justify-end gap-4 mt-4">
                   <button type="button" onClick={() => setIsEditing(false)} className="px-6 py-2 rounded-lg border border-white/20 hover:bg-white/5">Cancel</button>
                   <button type="submit" className="px-6 py-2 rounded-lg bg-gold-500 text-black font-bold hover:bg-gold-400">Save Property</button>
@@ -191,7 +229,7 @@ export default function Admin() {
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold">Properties</h2>
                 <button 
-                  onClick={() => { setCurrentProperty({ id: '', title: '', location: '', price: '', type: 'House', image: '', beds: '', baths: '', area: '', tag: '', tagColor: '' }); setIsEditing(true); }}
+                  onClick={() => { setCurrentProperty({ id: '', title: '', location: '', price: '', type: 'House', image: '', video_url: '', beds: '', baths: '', area: '', tag: '', tagColor: '' }); setIsEditing(true); }}
                   className="flex items-center gap-2 bg-gold-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-gold-400"
                 >
                   <Plus size={18} /> Add Property
