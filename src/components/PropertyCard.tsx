@@ -184,16 +184,6 @@ export default function PropertyCard({ p }: { p: Property }) {
                 Watch Video
               </button>
             )}
-            
-            {!p.video_url && (
-              <Link
-                to={`/properties`}
-                className="mt-6 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 text-xs font-label font-600 uppercase tracking-widest hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300 opacity-50 cursor-not-allowed"
-                onClick={(e) => e.preventDefault()}
-              >
-                No Video Available
-              </Link>
-            )}
           </div>
         </article>
       </TiltWrapper>

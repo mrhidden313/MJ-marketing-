@@ -217,8 +217,8 @@ export default function Admin() {
                   <input required type="text" value={currentProperty.location} onChange={e => setCurrentProperty({...currentProperty, location: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Price (e.g. Rs 12.5 Crore)</label>
-                  <input required type="text" value={currentProperty.price} onChange={e => setCurrentProperty({...currentProperty, price: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" />
+                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Price (Optional)</label>
+                  <input type="text" value={currentProperty.price} onChange={e => setCurrentProperty({...currentProperty, price: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Type</label>
