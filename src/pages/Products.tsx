@@ -138,13 +138,13 @@ export default function Products() {
                   {item.icon}
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className={`text-[11px] md:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${item.labelColor}`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-3 mb-2.5">
+                    <span className={`text-[10px] md:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${item.labelColor}`}>
                       {item.label}
                     </span>
-                    <h4 className="text-white font-bold text-base md:text-lg tracking-wide leading-none">{item.title}</h4>
+                    <h4 className="text-white font-bold text-[15px] md:text-lg tracking-wide leading-snug">{item.title}</h4>
                   </div>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed pr-2">{item.desc}</p>
+                  <p className="text-white/70 text-[13px] md:text-base leading-relaxed">{item.desc}</p>
                 </div>
               </motion.li>
             ))}
