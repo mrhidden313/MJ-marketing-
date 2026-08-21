@@ -21,17 +21,17 @@ export default function PremiumProductShowcase() {
   }, [audioPlayed]);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#0b0514] overflow-hidden flex flex-col items-center justify-between py-16 md:py-24">
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-between py-16 md:py-24 z-10">
       
-      {/* Background Ambient Glow */}
+      {/* Background Ambient Glow (Bleeds naturally without overflow-hidden cutoff) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
         <motion.div 
           animate={{ 
             scale: hasDropped ? [1, 1.5, 1.2] : 1,
-            opacity: hasDropped ? [0.2, 0.5, 0.3] : 0.2
+            opacity: hasDropped ? [0.15, 0.4, 0.2] : 0.15
           }}
           transition={{ duration: 2, ease: "easeOut" }}
-          className="w-[60vw] h-[60vw] bg-purple-600/30 rounded-full blur-[120px] absolute mix-blend-screen" 
+          className="w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] bg-purple-600/30 rounded-full blur-[150px] absolute mix-blend-screen" 
         />
       </div>
 
