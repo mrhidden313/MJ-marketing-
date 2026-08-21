@@ -62,6 +62,31 @@ export default function Navbar() {
 
   useEffect(() => setOpen(false), [location]);
 
+  // Dynamic theme based on route
+  const theme = isProductsPage ? {
+    border: "border-fuchsia-500/40",
+    shadowLogo: "shadow-[0_0_15px_rgba(219,39,119,0.3)]",
+    text: "text-fuchsia-400",
+    textShadow: "0 0 15px rgba(219,39,119,0.3)",
+    bgActive: "bg-fuchsia-600 text-white shadow-[0_0_15px_rgba(219,39,119,0.4)]",
+    underline: "bg-fuchsia-500/60",
+    btn: "bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 text-white shadow-[0_0_15px_rgba(219,39,119,0.3)] hover:shadow-[0_0_25px_rgba(219,39,119,0.5)] transition-shadow duration-300 rounded-full",
+    shadowScroll: "shadow-lg shadow-fuchsia-500/20",
+    bgHamburger: "bg-fuchsia-500",
+    mobileActive: "bg-fuchsia-500/15 text-fuchsia-400 border border-fuchsia-500/20"
+  } : {
+    border: "border-gold-500/40",
+    shadowLogo: "shadow-[0_0_15px_rgba(212,175,55,0.2)]",
+    text: "text-gold-400",
+    textShadow: "0 0 15px rgba(233,196,0,0.3)",
+    bgActive: "bg-gold-500 text-black shadow-gold-sm",
+    underline: "bg-gold-500/60",
+    btn: "btn-gold btn-call-ring",
+    shadowScroll: "shadow-lg shadow-gold-500/20",
+    bgHamburger: "bg-gold-500",
+    mobileActive: "bg-gold-500/15 text-gold-400 border border-gold-500/20"
+  };
+
   return (
     <motion.header 
       initial={{ y: 0 }}
@@ -86,14 +111,14 @@ export default function Navbar() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <motion.div
-                  className="rounded-full overflow-hidden border border-gold-500/40 bg-[#070a17]/80 backdrop-blur-md flex items-center justify-center p-1 transition-all duration-700 ease-in-out shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                  className={`rounded-full overflow-hidden border ${theme.border} bg-[#070a17]/80 backdrop-blur-md flex items-center justify-center p-1 transition-all duration-700 ease-in-out ${theme.shadowLogo}`}
                   style={{
                     width: scrolled ? '36px' : '48px',
                     height: scrolled ? '36px' : '48px',
                   }}
                   whileHover={{
                     scale: 1.1,
-                    boxShadow: '0 0 20px rgba(212,175,55,0.5)',
+                    boxShadow: isProductsPage ? '0 0 20px rgba(219,39,119,0.5)' : '0 0 20px rgba(212,175,55,0.5)',
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -115,7 +140,7 @@ export default function Navbar() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="md:hidden flex-1 flex justify-center pointer-events-none"
                 >
-                  <span className="text-gold-400 font-display font-bold text-lg tracking-widest uppercase" style={{ textShadow: '0 0 15px rgba(233,196,0,0.3)' }}>
+                  <span className={`${theme.text} font-display font-bold text-lg tracking-widest uppercase`} style={{ textShadow: theme.textShadow }}>
                     MJ GROUP OF COMPANIES
                   </span>
                 </motion.div>
@@ -138,13 +163,13 @@ export default function Navbar() {
                       to={to}
                       className={`rounded-full font-label font-600 uppercase tracking-widest transition-all duration-300 relative overflow-hidden ${scrolled ? 'px-4 py-1.5 text-xs' : 'px-6 py-2.5 text-[14px]'
                         } ${isActive
-                          ? 'bg-gold-500 text-black shadow-gold-sm'
+                          ? theme.bgActive
                           : 'text-white/70 hover:text-white hover:bg-white/8'
                         }`}
                     >
                       {/* Spring underline hover effect on inactive links */}
                       {!isActive && (
-                        <span className="absolute bottom-0 left-1/2 w-full h-[1px] bg-gold-500/60 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                        <span className={`absolute bottom-0 left-1/2 w-full h-[1px] ${theme.underline} origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
                       )}
                       {label}
                     </Link>
@@ -156,7 +181,7 @@ export default function Navbar() {
             {/* ── CTA with dynamic slide on scroll ── */}
             <motion.a
               href="tel:+923005522555"
-              className={`hidden md:inline-flex btn-gold btn-call-ring gap-1.5 transition-all duration-700 ease-in-out ${scrolled ? 'py-1.5 px-4 text-xs scale-95 shadow-lg shadow-gold-500/20' : 'py-3 px-8 text-sm scale-100'
+              className={`hidden md:inline-flex items-center justify-center gap-1.5 transition-all duration-700 ease-in-out ${theme.btn} ${scrolled ? `py-1.5 px-4 text-xs scale-95 ${theme.shadowScroll}` : 'py-3 px-8 text-sm scale-100'
                 }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -173,9 +198,9 @@ export default function Navbar() {
               onClick={() => setOpen(!open)}
               aria-label="Menu"
             >
-              <span className={`block h-0.5 w-6 bg-gold-500 transition-all duration-300 origin-center ${open ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-gold-500 transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-gold-500 transition-all duration-300 origin-center ${open ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`block h-0.5 w-6 ${theme.bgHamburger} transition-all duration-300 origin-center ${open ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block h-0.5 w-6 ${theme.bgHamburger} transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
+              <span className={`block h-0.5 w-6 ${theme.bgHamburger} transition-all duration-300 origin-center ${open ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
 
@@ -189,15 +214,15 @@ export default function Navbar() {
                     key={to}
                     to={to}
                     onClick={() => setOpen(false)}
-                    className={`px-4 py-3 rounded-xl text-sm font-label font-600 uppercase tracking-wider transition-all text-center ${isActive ? 'bg-gold-500/15 text-gold-400 border border-gold-500/20' : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
+                    className={`px-4 py-3 rounded-xl text-sm font-label font-600 uppercase tracking-wider transition-all text-center ${isActive ? theme.mobileActive : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
                       }`}
                   >
                     {label}
                   </Link>
                 );
               })}
-              <a href="tel:+923005522555" className="btn-gold btn-call-ring mt-3 py-3 text-sm flex justify-center">
-                <Phone size={14} className="mr-2" /> Call Now
+              <a href="tel:+923005522555" className={`mt-3 py-3 text-sm flex items-center justify-center gap-2 ${theme.btn}`}>
+                <Phone size={14} /> Call Now
               </a>
             </div>
           </div>

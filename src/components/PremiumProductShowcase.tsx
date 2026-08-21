@@ -149,18 +149,18 @@ export default function PremiumProductShowcase() {
               className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
               <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-end gap-3 text-xl">
-                Onion Power <Leaf size={22} />
+                Pure Onion Extract <Leaf size={22} />
               </h3>
-              <p className="text-white/70 text-sm md:text-base leading-relaxed">Rich in sulfur, helps reduce hair fall and boosts rapid growth naturally.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">Rich in dietary sulfur and antioxidants, it fortifies hair follicles to drastically reduce hair fall.</p>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
               className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
               <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-end gap-3 text-xl">
-                Amla Extract <Droplets size={22} />
+                Amla (Gooseberry) <Droplets size={22} />
               </h3>
-              <p className="text-white/70 text-sm md:text-base leading-relaxed">Strengthens hair roots and actively promotes new, natural hair growth.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">A powerhouse of Vitamin C that stimulates healthy root growth and delays premature graying.</p>
             </motion.div>
           </motion.div>
         )}
@@ -180,18 +180,18 @@ export default function PremiumProductShowcase() {
               className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
               <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-start gap-3 text-xl">
-                <CheckCircle2 size={22} /> Reetha
+                <CheckCircle2 size={22} /> Reetha (Soapnut)
               </h3>
-              <p className="text-white/70 text-sm md:text-base leading-relaxed">Natural cleanser that gently washes scalp without stripping essential oils.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">Nature's gentle cleanser. Removes dirt naturally without stripping essential scalp moisture.</p>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
               className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
               <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-start gap-3 text-xl">
-                <ShieldCheck size={22} /> 25+ Herbs
+                <ShieldCheck size={22} /> 25+ Rare Botanicals
               </h3>
-              <p className="text-white/70 text-sm md:text-base leading-relaxed">A powerful blend of Shikakai, Brahmi, Bhringraj, Methi Dana, and more.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">A synergistic blend of Shikakai, Brahmi, and Methi Dana for ultimate hair revitalization.</p>
             </motion.div>
           </motion.div>
         )}
