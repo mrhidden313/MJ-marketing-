@@ -18,21 +18,21 @@ export default function Products() {
       <div className="absolute top-[80vh] left-1/2 -translate-x-1/2 w-[90vw] h-[60vh] bg-fuchsia-600/15 blur-[150px] rounded-full pointer-events-none z-0" />
 
       {/* The About Section */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-stretch justify-center gap-10 lg:gap-16">
         
-        {/* Single Product Image - Full Uncropped, Scaled down 30% */}
+        {/* Single Product Image - Full Uncropped, Scaled to exact text box height */}
         <motion.div 
           initial={{ opacity: 0, x: -60, scale: 0.95 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, margin: "-150px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-3/4 sm:w-2/3 md:w-4/12 lg:w-[30%] mx-auto md:mx-0"
+          className="w-3/4 sm:w-2/3 md:w-4/12 lg:w-[35%] mx-auto md:mx-0 flex"
         >
-          <div className="w-full rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.15)] border border-white/5 overflow-hidden">
+          <div className="w-full h-full rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.15)] border border-white/5 overflow-hidden flex items-center justify-center bg-black/30">
             <img 
               src="/shampoo-bottle.jpeg" 
               alt="MJ Herbal Hair Shampoo"
-              className="w-full h-auto object-contain transition-transform duration-700 hover:scale-105"
+              className="w-full h-full object-contain transition-transform duration-700 hover:scale-105"
             />
           </div>
         </motion.div>
