@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import SEO from '../components/SEO';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Shield, Sparkles, Droplet, Leaf } from 'lucide-react';
 import PremiumProductShowcase from '../components/PremiumProductShowcase';
 
 export default function Products() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isVideoInView = useInView(videoRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isVideoInView && videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
+    }
+  }, [isVideoInView]);
+
   return (
     <div className="bg-[#0b0514] min-h-screen relative overflow-x-hidden w-full flex flex-col">
       <SEO 
@@ -20,7 +29,7 @@ export default function Products() {
       {/* The About Section */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-stretch justify-center gap-10 lg:gap-16">
         
-        {/* Single Product Image - Full Uncropped, Scaled to exact text box height */}
+        {/* Single Product Video - Lazy Loaded & Autoplay on View */}
         <motion.div 
           initial={{ opacity: 0, x: -60, scale: 0.95 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -28,11 +37,14 @@ export default function Products() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-3/4 sm:w-2/3 md:w-4/12 lg:w-[35%] mx-auto md:mx-0 flex"
         >
-          <div className="w-full h-full rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.15)] border border-white/5 overflow-hidden flex items-center justify-center bg-black/30">
-            <img 
-              src="/shampoo-bottle.jpeg" 
-              alt="MJ Herbal Hair Shampoo"
-              className="w-full h-full object-contain transition-transform duration-700 hover:scale-105"
+          <div className="w-full h-full rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.15)] border border-white/5 overflow-hidden flex items-center justify-center bg-black/50">
+            <video 
+              ref={videoRef}
+              src="/mj-ads.mp4" 
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover transition-transform duration-700"
             />
           </div>
         </motion.div>
