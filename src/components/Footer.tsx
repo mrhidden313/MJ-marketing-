@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 const PAGES = [
   ['Home', '/'],
   ['Properties', '/properties'],
-  ['Projects', '/projects'],
+  ['Products', '/products'],
   ['About', '/about'],
   ['Contact', '/contact'],
 ];

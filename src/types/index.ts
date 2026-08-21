@@ -12,3 +12,12 @@ export interface Property {
   image:      string;
   video_url?: string;
 }
+
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  created_at?: string;
+}

@@ -6,7 +6,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Properties', to: '/properties' },
-  { label: 'Projects', to: '/projects' },
+  { label: 'Products', to: '/products' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];

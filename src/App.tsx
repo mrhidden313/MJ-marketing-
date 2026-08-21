@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Properties from './pages/Properties';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Projects from './pages/Projects';
+import Products from './pages/Products';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Admin from './pages/Admin';
@@ -179,7 +179,7 @@ function AnimatedRoutes() {
         <Route path="/properties" element={<PageWrapper><Properties /></PageWrapper>} />
         <Route path="/about"      element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact"    element={<PageWrapper><Contact /></PageWrapper>} />
-        <Route path="/projects"   element={<PageWrapper><Projects /></PageWrapper>} />
+        <Route path="/products"   element={<PageWrapper><Products /></PageWrapper>} />
         <Route path="/privacy"    element={<PageWrapper><Privacy /></PageWrapper>} />
         <Route path="/terms"      element={<PageWrapper><Terms /></PageWrapper>} />
         <Route path="/login"      element={<PageWrapper><Login /></PageWrapper>} />

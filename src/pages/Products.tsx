@@ -2,7 +2,7 @@ import React from 'react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { InteractiveFolderGallery } from '../components/ui/interactive-folder-gallery';
-import { useProperties } from '../hooks/useProperties';
+import { useProducts } from '../hooks/useProducts';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -17,14 +17,14 @@ const FadeUp = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
   </motion.div>
 );
 
-export default function Projects() {
-  const { properties, loading } = useProperties();
+export default function Products() {
+  const { products, loading } = useProducts();
 
   return (
     <div className="pt-32 pb-24 min-h-screen relative overflow-hidden">
       <SEO 
-        title="VIP Real Estate Projects | MJ GROUP OF COMPANIES" 
-        description="Browse our master-planned communities and high-end residential developments. Secure your future in Peshawar's most elite projects."
+        title="Exclusive Products | MJ GROUP OF COMPANIES" 
+        description="Browse our exclusive products and developments. Secure your future with our premium offerings."
       />
       
       {/* Background glow */}
@@ -35,18 +35,45 @@ export default function Projects() {
         {/* Header section */}
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <FadeUp>
-            <span className="section-label justify-center mb-4 block">Upcoming Developments</span>
+            <span className="section-label justify-center mb-4 block">Exclusive Offerings</span>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="font-display font-900 text-white mb-6" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
-              Our <span className="text-gold-gradient">Signature</span> Projects
+              Our <span className="text-gold-gradient">Signature</span> Products
             </h1>
           </FadeUp>
             <FadeUp delay={0.2}>
               <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-light">
-                Explore our portfolio of high-end residential and commercial developments.
+                Explore our portfolio of high-end products and exclusive offerings.
               </p>
             </FadeUp>
+        </div>
+
+        {/* Products Grid */}
+        <div className="mb-32">
+          {loading ? (
+            <div className="text-center text-white/50 py-12">Loading products...</div>
+          ) : products.length === 0 ? (
+            <div className="text-center text-white/50 py-12">No products available at the moment.</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.map((product, index) => (
+                <FadeUp key={product.id} delay={0.1 * (index % 3)}>
+                  <div className="liquid-glass rounded-2xl overflow-hidden border border-white/10 group">
+                    <div className="relative h-64 overflow-hidden">
+                      <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-transparent to-transparent opacity-80" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-display font-bold text-white mb-2">{product.title}</h3>
+                      <p className="text-gold-400 font-bold mb-4">{product.price}</p>
+                      <p className="text-white/60 text-sm line-clamp-3">{product.description}</p>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Interactive folder gallery */}
@@ -58,12 +85,12 @@ export default function Projects() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
           {loading ? (
-            <div className="text-white/50">Loading projects...</div>
+            <div className="text-white/50">Loading gallery...</div>
           ) : (
             <InteractiveFolderGallery
-              folderName="Signature Projects"
+              folderName="Gallery"
               dragHintText="Drag any photo down to close"
-              photos={properties.length > 0 ? properties.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image })) : undefined}
+              photos={products.length > 0 ? products.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image })) : undefined}
             />
           )}
         </motion.div>
@@ -71,9 +98,9 @@ export default function Projects() {
         {/* CTA section at bottom */}
         <div className="mt-32 flex flex-col items-center">
            <FadeUp delay={0.3}>
-             <h3 className="text-2xl font-bold text-white mb-6">Interested in our projects?</h3>
+             <h3 className="text-2xl font-bold text-white mb-6">Interested in our products?</h3>
              <Link to="/contact" className="btn-gold group px-8 py-4 text-sm inline-flex items-center gap-2">
-                Talk to our Project Consultants
+                Talk to our Sales Team
                 <motion.span
                   className="inline-block"
                   whileHover={{ x: 4 }}
