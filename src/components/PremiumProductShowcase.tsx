@@ -14,7 +14,7 @@ export default function PremiumProductShowcase() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-[#0b0514] overflow-hidden flex items-center justify-center">
+    <div className="relative w-full min-h-screen bg-[#0b0514] overflow-hidden flex flex-col items-center justify-between py-16 md:py-24">
       
       {/* Background Ambient Glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -29,7 +29,7 @@ export default function PremiumProductShowcase() {
       </div>
 
       {/* Hero Text */}
-      <div className="absolute top-24 text-center z-20 w-full px-4">
+      <div className="relative text-center z-20 w-full px-4 shrink-0">
         <motion.span 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative z-30 w-[85%] md:w-[30%] max-w-[360px] mt-36"
+        className="relative z-30 w-[85%] md:w-[30%] max-w-[360px] my-auto"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
@@ -170,7 +170,7 @@ export default function PremiumProductShowcase() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="absolute bottom-4 left-0 w-full flex justify-center gap-4 md:gap-16 px-4 z-30"
+            className="relative w-full flex justify-center gap-4 md:gap-16 px-4 z-30 shrink-0 mt-8"
           >
             {[
               { text: "Chemical Free", icon: "🌱" },
