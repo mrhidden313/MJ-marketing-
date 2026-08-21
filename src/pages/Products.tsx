@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { InteractiveFolderGallery } from '../components/ui/interactive-folder-gallery';
 import { useProducts } from '../hooks/useProducts';
+import PremiumProductShowcase from '../components/PremiumProductShowcase';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -21,16 +22,19 @@ export default function Products() {
   const { products, loading } = useProducts();
 
   return (
-    <div className="pt-32 pb-24 min-h-screen relative overflow-hidden">
+    <div className="bg-[#02040a]">
       <SEO 
         title="Exclusive Products | MJ GROUP OF COMPANIES" 
         description="Browse our exclusive products and developments. Secure your future with our premium offerings."
       />
       
-      {/* Background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <PremiumProductShowcase />
+
+      <div className="pt-32 pb-24 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {/* Header section */}
         <div className="text-center mb-20 max-w-3xl mx-auto">
@@ -110,8 +114,9 @@ export default function Products() {
                 </motion.span>
              </Link>
            </FadeUp>
-        </div>
+          </div>
 
+        </div>
       </div>
     </div>
   );
