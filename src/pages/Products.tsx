@@ -20,13 +20,13 @@ export default function Products() {
       {/* The About Section */}
       <div className="relative z-20 w-full max-w-4xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12">
         
-        {/* Single Product Image - Full Uncropped */}
+        {/* Single Product Image - Full Uncropped, Scaled down 30% */}
         <motion.div 
           initial={{ opacity: 0, x: -60, scale: 0.95 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, margin: "-150px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full md:w-5/12"
+          className="w-3/4 sm:w-2/3 md:w-4/12 lg:w-[30%] mx-auto md:mx-0"
         >
           <div className="w-full rounded-3xl shadow-[0_0_40px_rgba(168,85,247,0.15)] border border-white/5 overflow-hidden">
             <img 
@@ -43,7 +43,7 @@ export default function Products() {
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true, margin: "-150px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="w-full md:w-7/12 glass p-5 md:p-6 rounded-3xl border border-white/10 bg-[#0b0514]/60 backdrop-blur-2xl shadow-2xl relative overflow-hidden flex flex-col justify-center"
+          className="w-full md:w-8/12 lg:w-[65%] glass p-5 md:p-6 rounded-3xl border border-white/10 bg-[#0b0514]/60 backdrop-blur-2xl shadow-2xl relative overflow-hidden flex flex-col justify-center"
         >
           {/* Subtle inner glow */}
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-fuchsia-600/20 blur-[60px] rounded-full pointer-events-none" />
