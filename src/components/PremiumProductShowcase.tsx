@@ -6,10 +6,10 @@ export default function PremiumProductShowcase() {
   const [hasDropped, setHasDropped] = useState(false);
 
   useEffect(() => {
-    // Trigger the drop animation shortly after component mounts
+    // Trigger the drop animation after a longer delay so it stays hidden initially
     const timer = setTimeout(() => {
       setHasDropped(true);
-    }, 500);
+    }, 1500); // Increased from 500ms to 1.5s
     return () => clearTimeout(timer);
   }, []);
 
@@ -52,36 +52,52 @@ export default function PremiumProductShowcase() {
       {/* The Splash Effect (Liquid Ripples) */}
       <AnimatePresence>
         {hasDropped && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full h-full pointer-events-none flex items-center justify-center mt-32">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full h-full pointer-events-none flex items-center justify-center mt-40">
+            {/* Base Water Glow (pool) */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.6 }}
+              transition={{ duration: 3, ease: "easeOut" }}
+              className="absolute w-[80vw] h-[40vw] max-w-[1200px] max-h-[600px] bg-purple-600/30 rounded-[100%] blur-[80px]"
+              style={{ transform: 'rotateX(60deg)' }}
+            />
             {/* Ripple 1 */}
             <motion.div
-              initial={{ width: 0, height: 0, opacity: 0.8, borderWidth: '10px' }}
-              animate={{ width: 800, height: 400, opacity: 0, borderWidth: '1px' }}
-              transition={{ duration: 2, ease: "easeOut" }}
-              className="absolute rounded-[100%] border-purple-500/50"
+              initial={{ width: 0, height: 0, opacity: 0.9, borderWidth: '15px' }}
+              animate={{ width: 1200, height: 600, opacity: 0, borderWidth: '1px' }}
+              transition={{ duration: 2.5, ease: "easeOut" }}
+              className="absolute rounded-[100%] border-purple-500/60"
               style={{ transform: 'rotateX(60deg)' }}
             />
             {/* Ripple 2 */}
             <motion.div
-              initial={{ width: 0, height: 0, opacity: 0.8, borderWidth: '20px' }}
-              animate={{ width: 600, height: 300, opacity: 0, borderWidth: '2px' }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-              className="absolute rounded-[100%] border-fuchsia-400/60"
+              initial={{ width: 0, height: 0, opacity: 0.8, borderWidth: '25px' }}
+              animate={{ width: 900, height: 450, opacity: 0, borderWidth: '2px' }}
+              transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+              className="absolute rounded-[100%] border-fuchsia-400/70"
+              style={{ transform: 'rotateX(60deg)' }}
+            />
+            {/* Ripple 3 (Extra Water) */}
+            <motion.div
+              initial={{ width: 0, height: 0, opacity: 0.7, borderWidth: '10px' }}
+              animate={{ width: 1400, height: 700, opacity: 0, borderWidth: '1px' }}
+              transition={{ duration: 3, ease: "easeOut", delay: 0.4 }}
+              className="absolute rounded-[100%] border-pink-500/40"
               style={{ transform: 'rotateX(60deg)' }}
             />
             {/* Flying Droplets */}
-            {[...Array(12)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
                 animate={{ 
-                  x: (Math.random() - 0.5) * 400, 
-                  y: (Math.random() - 1) * 300, 
-                  scale: Math.random() * 1.5,
+                  x: (Math.random() - 0.5) * 600, 
+                  y: (Math.random() - 1) * 400, 
+                  scale: Math.random() * 2,
                   opacity: 0 
                 }}
-                transition={{ duration: 1 + Math.random(), ease: "easeOut" }}
-                className="absolute w-3 h-3 bg-gradient-to-b from-purple-300 to-fuchsia-500 rounded-full shadow-[0_0_10px_rgba(217,70,239,0.8)]"
+                transition={{ duration: 1.5 + Math.random(), ease: "easeOut" }}
+                className="absolute w-3 h-3 md:w-5 md:h-5 bg-gradient-to-b from-purple-300 to-fuchsia-500 rounded-full shadow-[0_0_15px_rgba(217,70,239,0.9)]"
               />
             ))}
           </div>
@@ -90,9 +106,9 @@ export default function PremiumProductShowcase() {
 
       {/* The Dropping Bottle */}
       <motion.div 
-        initial={{ y: -800, scale: 1.2, rotate: 15 }}
+        initial={{ y: -1500, scale: 1.2, rotate: 15 }} // Started much higher so it's completely hidden
         animate={{ 
-          y: hasDropped ? 0 : -800, 
+          y: hasDropped ? 0 : -1500, 
           scale: hasDropped ? 1 : 1.2,
           rotate: hasDropped ? 0 : 15
         }}
@@ -102,7 +118,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative z-30 w-[85%] md:w-[30%] max-w-[360px] my-auto"
+        className="relative z-30 w-[85%] md:w-[30%] max-w-[360px] my-auto mt-12"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
