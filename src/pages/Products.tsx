@@ -13,44 +13,31 @@ export default function Products() {
       
       <PremiumProductShowcase />
 
-      {/* The Parallax About Section that slides up behind the fixed bottle */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32 mt-[100vh] flex flex-col items-center">
+      {/* The Parallax About Section that slides up */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32 mt-[50vh] flex flex-col md:flex-row items-center justify-center gap-12">
         
-        {/* Pictures */}
-        <div className="relative w-full h-[600px] mb-24 pointer-events-none">
-          <motion.img 
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            src="/about1.jpg" 
-            className="absolute left-[5%] top-0 w-48 md:w-64 aspect-[3/4] object-cover rounded-3xl shadow-2xl border-2 border-gold-500/20"
+        {/* Single Product Image */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1 }}
+          className="w-full md:w-1/2 max-w-md"
+        >
+          <img 
+            src="/shampoo-bottle.jpeg" 
+            alt="MJ Herbal Hair Shampoo"
+            className="w-full h-auto rounded-3xl shadow-2xl border-2 border-gold-500/20"
           />
-          <motion.img 
-            initial={{ opacity: 0, y: 150 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            src="/about2.jpg" 
-            className="absolute right-[5%] top-24 w-56 md:w-72 aspect-[3/4] object-cover rounded-3xl shadow-2xl border-2 border-fuchsia-500/20"
-          />
-          <motion.img 
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4 }}
-            src="/about3.jpg" 
-            className="absolute left-[20%] bottom-0 w-64 md:w-80 aspect-[4/3] object-cover rounded-3xl shadow-2xl border-2 border-purple-500/20"
-          />
-        </div>
+        </motion.div>
 
         {/* About Text */}
         <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="glass p-8 md:p-16 rounded-3xl border border-white/10 max-w-3xl text-center bg-[#0b0514]/80 backdrop-blur-xl shadow-2xl"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full md:w-1/2 glass p-8 md:p-12 rounded-3xl border border-white/10 bg-[#0b0514]/80 backdrop-blur-xl shadow-2xl"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold text-gold-400 mb-8">
             The Essence of Nature
