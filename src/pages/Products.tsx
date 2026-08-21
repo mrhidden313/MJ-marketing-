@@ -5,7 +5,7 @@ import PremiumProductShowcase from '../components/PremiumProductShowcase';
 
 export default function Products() {
   return (
-    <div className="bg-[#0b0514] min-h-[300vh] relative">
+    <div className="bg-[#0b0514] min-h-screen relative">
       <SEO 
         title="Exclusive Products | MJ GROUP OF COMPANIES" 
         description="Browse our exclusive products and developments. Secure your future with our premium offerings."
@@ -13,8 +13,8 @@ export default function Products() {
       
       <PremiumProductShowcase />
 
-      {/* The Parallax About Section that slides up */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32 mt-[50vh] flex flex-col md:flex-row items-center justify-center gap-12">
+      {/* The About Section */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-center gap-12">
         
         {/* Single Product Image */}
         <motion.div 
