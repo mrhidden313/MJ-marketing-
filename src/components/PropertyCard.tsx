@@ -172,8 +172,7 @@ export default function PropertyCard({ p }: { p: Property }) {
             </h3>
 
             <div className="mt-4 flex items-center justify-between text-white/60 text-sm">
-              <span className="text-gold-400 font-bold">{p.price}</span>
-              <span className="truncate max-w-[50%]">{p.location}</span>
+              <span className="truncate max-w-[90%]">{p.location}</span>
             </div>
             
             {p.video_url && (

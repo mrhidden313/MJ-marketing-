@@ -216,10 +216,7 @@ export default function Admin() {
                   <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Location</label>
                   <input required type="text" value={currentProperty.location} onChange={e => setCurrentProperty({...currentProperty, location: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" />
                 </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Price (Optional)</label>
-                  <input type="text" value={currentProperty.price} onChange={e => setCurrentProperty({...currentProperty, price: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white" />
-                </div>
+
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Type</label>
                   <select value={currentProperty.type} onChange={e => setCurrentProperty({...currentProperty, type: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-white">
@@ -272,21 +269,19 @@ export default function Admin() {
                     <tr>
                       <th className="p-4 text-white/50 font-normal">Image</th>
                       <th className="p-4 text-white/50 font-normal">Title</th>
-                      <th className="p-4 text-white/50 font-normal">Price</th>
                       <th className="p-4 text-white/50 font-normal">Type</th>
                       <th className="p-4 text-white/50 font-normal">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {propsLoading ? (
-                      <tr><td colSpan={5} className="p-8 text-center text-white/50">Loading properties...</td></tr>
+                      <tr><td colSpan={4} className="p-8 text-center text-white/50">Loading properties...</td></tr>
                     ) : properties.map(p => (
                       <tr key={p.id} className="border-b border-white/5 hover:bg-white/5">
                         <td className="p-4">
                           <img src={p.image} alt="prop" className="w-16 h-12 object-cover rounded-md" />
                         </td>
                         <td className="p-4 font-medium">{p.title}</td>
-                        <td className="p-4 text-gold-400">{p.price}</td>
                         <td className="p-4">{p.type}</td>
                         <td className="p-4 flex gap-3">
                           <button onClick={() => { setCurrentProperty(p); setIsEditing(true); }} className="text-blue-400 hover:text-blue-300 p-2"><Edit2 size={18}/></button>
