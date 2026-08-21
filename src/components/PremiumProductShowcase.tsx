@@ -135,14 +135,14 @@ export default function PremiumProductShowcase() {
         />
       </motion.div>
 
-      {/* Floating Ingredients (Left) - Moved up by changing top-1/2 to top-[35%] */}
+      {/* Floating Ingredients (Left) */}
       <AnimatePresence>
         {hasDropped && (
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="absolute left-4 md:left-16 lg:left-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex flex-col items-end gap-6 text-right"
+            className="hidden md:flex absolute left-4 md:left-16 lg:left-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex-col items-end gap-6 text-right"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
@@ -166,14 +166,14 @@ export default function PremiumProductShowcase() {
         )}
       </AnimatePresence>
 
-      {/* Floating Ingredients (Right) - Moved up by changing top-1/2 to top-[35%] */}
+      {/* Floating Ingredients (Right) */}
       <AnimatePresence>
         {hasDropped && (
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute right-4 md:right-16 lg:right-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex flex-col items-start gap-6 text-left"
+            className="hidden md:flex absolute right-4 md:right-16 lg:right-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex-col items-start gap-6 text-left"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
