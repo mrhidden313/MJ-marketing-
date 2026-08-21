@@ -1,4 +1,3 @@
-import React from 'react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { InteractiveFolderGallery } from '../components/ui/interactive-folder-gallery';
@@ -22,7 +21,7 @@ export default function Products() {
   const { products, loading } = useProducts();
 
   return (
-    <div className="bg-[#02040a]">
+    <div className="bg-[#0b0514]">
       <SEO 
         title="Exclusive Products | MJ GROUP OF COMPANIES" 
         description="Browse our exclusive products and developments. Secure your future with our premium offerings."
@@ -80,25 +79,6 @@ export default function Products() {
           )}
         </div>
 
-        {/* Interactive folder gallery */}
-        <motion.div
-          className="w-full flex justify-center mt-10"
-          initial={{ opacity: 0, y: 140, scale: 0.85, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
-          {loading ? (
-            <div className="text-white/50">Loading gallery...</div>
-          ) : (
-            <InteractiveFolderGallery
-              folderName="Gallery"
-              dragHintText="Drag any photo down to close"
-              photos={products.length > 0 ? products.slice(0, 5).map((p, index) => ({ id: p.id || index, image: p.image })) : undefined}
-            />
-          )}
-        </motion.div>
-
         {/* CTA section at bottom */}
         <div className="mt-32 flex flex-col items-center">
            <FadeUp delay={0.3}>
@@ -114,10 +94,10 @@ export default function Products() {
                 </motion.span>
              </Link>
            </FadeUp>
-          </div>
-
         </div>
+
       </div>
     </div>
+  </div>
   );
 }

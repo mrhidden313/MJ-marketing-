@@ -14,8 +14,24 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const location = useLocation();
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const isProductsPage = location.pathname === '/products';
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (!isProductsPage) {
+      if (hidden) setHidden(false);
+      return;
+    }
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > 150) {
+      setHidden(true); // scrolling down
+    } else {
+      setHidden(false); // scrolling up
+    }
+  });
 
   // ── Use IntersectionObserver instead of scroll listener
   // This fires ZERO times while scrolling — only fires at 80px threshold
@@ -47,7 +63,12 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+    <motion.header 
+      initial={{ y: 0 }}
+      animate={{ y: hidden ? '-100%' : '0%' }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
+    >
       <div className={`pointer-events-auto transition-all duration-700 ease-in-out ${scrolled || open ? 'py-0 md:py-0' : 'py-3 md:py-6'
         }`}>
         <div className={`mx-auto border transition-all duration-700 ease-in-out ${scrolled || open
@@ -182,6 +203,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

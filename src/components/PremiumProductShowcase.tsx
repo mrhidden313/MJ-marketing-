@@ -9,7 +9,7 @@ export default function PremiumProductShowcase() {
     // Trigger the drop animation after a longer delay so it stays hidden initially
     const timer = setTimeout(() => {
       setHasDropped(true);
-    }, 1500); // Increased from 500ms to 1.5s
+    }, 800); // Reduced delay for faster entry
     return () => clearTimeout(timer);
   }, []);
 
@@ -179,13 +179,22 @@ export default function PremiumProductShowcase() {
         )}
       </AnimatePresence>
 
-      {/* Trust Badges Bottom */}
+      {/* Trust Badges Bottom (Staggered Animation) */}
       <AnimatePresence>
         {hasDropped && (
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  delayChildren: 1.5,
+                  staggerChildren: 0.2 // Staggers 1 by 1 like typewriter
+                }
+              }
+            }}
             className="relative w-full flex justify-center gap-4 md:gap-16 px-4 z-30 shrink-0 mt-8"
           >
             {[
@@ -193,12 +202,13 @@ export default function PremiumProductShowcase() {
               { text: "Sulfate Free", icon: "💧" },
               { text: "Paraben Free", icon: "🛡️" },
               { text: "Cruelty Free", icon: "🐰" }
-            ].map((badge, i) => (
+            ].map((badge) => (
               <motion.div 
                 key={badge.text}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", delay: 1.5 + (i * 0.1) }}
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.8 },
+                  visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100 } }
+                }}
                 className="flex flex-col items-center gap-3"
               >
                 <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-gold-500/40 flex items-center justify-center text-2xl md:text-3xl bg-[#0b0514]/80 backdrop-blur-md shadow-[0_0_20px_rgba(250,204,21,0.1)]">
