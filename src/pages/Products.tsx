@@ -61,47 +61,53 @@ export default function Products() {
                 label: "Defense",
                 labelColor: "text-purple-300 bg-purple-500/20 border-purple-500/30",
                 title: "Complete Hair Fall Stop",
-                desc: "Instantly halts daily breakage and reinforces roots.",
-                icon: <Sparkles className="text-purple-400 w-4 h-4" />,
+                desc: "Instantly halts daily breakage, strengthens weak strands, and deeply reinforces roots from within.",
+                icon: <Sparkles className="text-purple-400 w-5 h-5" />,
                 bg: "bg-purple-500/10",
-                border: "border-purple-500/30"
+                border: "border-purple-500/30",
+                hoverBg: "rgba(168, 85, 247, 0.12)",
+                hoverBorderClass: "hover:border-purple-500/40"
               },
               {
                 label: "Extracts",
                 labelColor: "text-green-300 bg-green-500/20 border-green-500/30",
                 title: "25+ Rare Botanicals",
-                desc: "Pure Onion Extract, Shikakai, Brahmi, Amla, and Reetha.",
-                icon: <Leaf className="text-green-400 w-4 h-4" />,
+                desc: "A pure, potent blend of Onion Extract, Shikakai, Brahmi, Amla, and Reetha for maximum growth.",
+                icon: <Leaf className="text-green-400 w-5 h-5" />,
                 bg: "bg-green-500/10",
-                border: "border-green-500/30"
+                border: "border-green-500/30",
+                hoverBg: "rgba(34, 197, 94, 0.12)",
+                hoverBorderClass: "hover:border-green-500/40"
               },
               {
                 label: "Repair",
                 labelColor: "text-blue-300 bg-blue-500/20 border-blue-500/30",
                 title: "Intense Hydration",
-                desc: "Aloe Vera & Argan oil deeply moisturize dry scalp.",
-                icon: <Droplet className="text-blue-400 w-4 h-4" />,
+                desc: "Aloe Vera & Argan oil deeply moisturize a dry, flaky scalp while restoring natural shine.",
+                icon: <Droplet className="text-blue-400 w-5 h-5" />,
                 bg: "bg-blue-500/10",
-                border: "border-blue-500/30"
+                border: "border-blue-500/30",
+                hoverBg: "rgba(59, 130, 246, 0.12)",
+                hoverBorderClass: "hover:border-blue-500/40"
               }
             ].map((item, idx) => (
               <motion.li 
                 key={idx}
-                whileHover={{ scale: 1.03, x: 10, backgroundColor: "rgba(255,255,255,0.05)" }}
+                whileHover={{ scale: 1.03, x: 10, backgroundColor: item.hoverBg }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-start gap-4 p-3 rounded-2xl cursor-pointer transition-colors border border-transparent hover:border-white/10 group"
+                className={`flex items-start gap-4 p-4 rounded-2xl cursor-pointer transition-colors border border-transparent group ${item.hoverBorderClass}`}
               >
-                <div className={`w-10 h-10 rounded-full ${item.bg} flex items-center justify-center shrink-0 border ${item.border} group-hover:scale-110 transition-transform`}>
+                <div className={`w-12 h-12 rounded-full ${item.bg} flex items-center justify-center shrink-0 border ${item.border} group-hover:scale-110 transition-transform`}>
                   {item.icon}
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className={`text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${item.labelColor}`}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className={`text-[11px] md:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${item.labelColor}`}>
                       {item.label}
                     </span>
-                    <h4 className="text-white font-bold text-sm md:text-base tracking-wide leading-none">{item.title}</h4>
+                    <h4 className="text-white font-bold text-base md:text-lg tracking-wide leading-none">{item.title}</h4>
                   </div>
-                  <p className="text-white/60 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                  <p className="text-white/70 text-sm md:text-base leading-relaxed pr-2">{item.desc}</p>
                 </div>
               </motion.li>
             ))}
