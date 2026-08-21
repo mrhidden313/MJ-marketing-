@@ -102,7 +102,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative z-30 w-[70%] md:w-[25%] max-w-[300px] mt-24"
+        className="relative z-30 w-[85%] md:w-[30%] max-w-[360px] mt-36"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
@@ -170,7 +170,7 @@ export default function PremiumProductShowcase() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="absolute bottom-12 left-0 w-full flex justify-center gap-6 md:gap-16 px-4 z-30"
+            className="absolute bottom-4 left-0 w-full flex justify-center gap-4 md:gap-16 px-4 z-30"
           >
             {[
               { text: "Chemical Free", icon: "🌱" },
