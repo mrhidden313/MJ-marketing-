@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { motion } from 'framer-motion';
 import PremiumProductShowcase from '../components/PremiumProductShowcase';
 
 export default function Products() {
