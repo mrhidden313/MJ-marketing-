@@ -18,7 +18,7 @@ export default function Products() {
       <div className="absolute top-[80vh] left-1/2 -translate-x-1/2 w-[90vw] h-[60vh] bg-fuchsia-600/15 blur-[150px] rounded-full pointer-events-none z-0" />
 
       {/* The About Section */}
-      <div className="relative z-20 w-full max-w-4xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-32 mt-32 md:mt-48 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
         
         {/* Single Product Image - Full Uncropped, Scaled down 30% */}
         <motion.div 

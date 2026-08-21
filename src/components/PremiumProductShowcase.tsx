@@ -36,23 +36,23 @@ export default function PremiumProductShowcase() {
       </div>
 
       {/* Hero Text */}
-      <div className="relative text-center z-20 w-full px-4 shrink-0">
-        <motion.span 
+      <div className="relative text-center z-20 w-full px-4 shrink-0 mt-16 md:mt-24 mb-12">
+        <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-gold-400 font-label tracking-[0.3em] text-xs md:text-sm uppercase mb-4 block"
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-6xl md:text-[7.5rem] font-display font-900 text-white tracking-tight leading-none mb-6 drop-shadow-2xl"
+          style={{ textShadow: "0 4px 30px rgba(212,175,55,0.4)" }}
         >
-          MJ Cosmetics Exclusive
-        </motion.span>
+          MJ <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500">COSMETICS</span>
+        </motion.h1>
         <motion.h2 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-900 text-white leading-tight"
+          className="text-2xl md:text-4xl lg:text-5xl font-display font-600 text-white/90 leading-tight"
         >
-          Nature's Secret for <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">Perfect Hair</span>
+          Nature's Secret for <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300 font-bold">Perfect Hair</span>
         </motion.h2>
       </div>
 
@@ -124,7 +124,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative top-auto left-auto transform-none z-50 w-[80%] md:w-[32%] max-w-[400px] pointer-events-none mt-12"
+        className="relative top-auto left-auto transform-none z-50 w-[80%] md:w-[32%] max-w-[400px] pointer-events-none mt-8 md:mt-4"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
@@ -135,14 +135,14 @@ export default function PremiumProductShowcase() {
         />
       </motion.div>
 
-      {/* Floating Ingredients (Left) */}
+      {/* Floating Ingredients (Left) - Moved up by changing top-1/2 to top-[35%] */}
       <AnimatePresence>
         {hasDropped && (
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="absolute left-4 md:left-16 lg:left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-6 text-right"
+            className="absolute left-4 md:left-16 lg:left-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex flex-col items-end gap-6 text-right"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
@@ -166,14 +166,14 @@ export default function PremiumProductShowcase() {
         )}
       </AnimatePresence>
 
-      {/* Floating Ingredients (Right) */}
+      {/* Floating Ingredients (Right) - Moved up by changing top-1/2 to top-[35%] */}
       <AnimatePresence>
         {hasDropped && (
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute right-4 md:right-16 lg:right-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start gap-6 text-left"
+            className="absolute right-4 md:right-16 lg:right-24 top-[35%] md:top-[40%] -translate-y-1/2 z-20 flex flex-col items-start gap-6 text-left"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
