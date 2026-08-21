@@ -42,6 +42,7 @@ export default function About() {
       <SEO 
         title="About Us | MJ GROUP OF COMPANIES" 
         description="Since 2015, MJ GROUP OF COMPANIES has been redefining luxury real estate in Peshawar with unparalleled service, expertise, and exclusive market access."
+        path="/about"
       />
       {/* Header */}
       <section className="pt-36 pb-16 px-6 lg:px-12 relative overflow-hidden"

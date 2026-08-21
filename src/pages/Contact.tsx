@@ -41,6 +41,7 @@ export default function Contact() {
       <SEO
         title="Contact Us | MJ GROUP OF COMPANIES"
         description="Get in touch with Peshawar's leading real estate experts. Our team is ready to assist you with secure investments and luxury property acquisitions."
+        path="/contact"
       />
       {/* Cinematic Header */}
       <section className="relative pt-40 pb-12 px-6 lg:px-12 overflow-hidden">

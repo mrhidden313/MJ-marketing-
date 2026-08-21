@@ -60,6 +60,14 @@ export default function Properties() {
       <SEO 
         title="Luxury Properties in Peshawar | MJ GROUP OF COMPANIES" 
         description="Explore our hand-picked portfolio of exclusive properties in Peshawar. Find your dream home or next luxury investment with MJ GROUP OF COMPANIES."
+        path="/properties"
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Luxury Properties in Peshawar",
+          "description": "Explore our hand-picked portfolio of exclusive properties in Peshawar.",
+          "url": "https://mjmarketingofficial.com/properties"
+        }}
       />
       {/* ═══════════════════════════════ CINEMATIC HEADER ════════════════════════════ */}
       <section className="relative pt-40 pb-24 px-6 lg:px-12 overflow-hidden">

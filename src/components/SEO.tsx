@@ -7,7 +7,8 @@ interface SEOProps {
   name?: string;
   type?: string;
   image?: string;
-  url?: string;
+  path?: string; // Relative path (e.g. '/properties')
+  schemaData?: any; // JSON-LD schema object
 }
 
 export default function SEO({ 
@@ -15,9 +16,14 @@ export default function SEO({
   description, 
   name = "MJ GROUP OF COMPANIES", 
   type = "website", 
-  image = "https://mjmarketing.com.pk/logo.png", // Ensure this points to a valid absolute URL in production
-  url = "https://mjmarketing.com.pk"
+  image = "https://mjmarketingofficial.com/logo.png",
+  path = "",
+  schemaData
 }: SEOProps) {
+  
+  const baseUrl = "https://mjmarketingofficial.com";
+  const canonicalUrl = `${baseUrl}${path}`;
+
   return (
     <Helmet>
       {/* Standard metadata tags */}
@@ -28,7 +34,7 @@ export default function SEO({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={name} />
       
@@ -41,7 +47,14 @@ export default function SEO({
       
       {/* Additional tags for search engines */}
       <meta name="robots" content="index, follow" />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={canonicalUrl} />
+
+      {/* Dynamic JSON-LD Schema */}
+      {schemaData && (
+        <script type="application/ld+json">
+          {JSON.stringify(schemaData)}
+        </script>
+      )}
     </Helmet>
   );
 }

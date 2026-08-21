@@ -17,8 +17,27 @@ export default function Products() {
   return (
     <div className="bg-[#0b0514] min-h-screen relative overflow-x-hidden w-full flex flex-col">
       <SEO 
-        title="Exclusive Products | MJ GROUP OF COMPANIES" 
-        description="Browse our exclusive products and developments. Secure your future with our premium offerings."
+        title="MJ Herbal Hair Shampoo | Organic Hair Fall Solution" 
+        description="Discover MJ Herbal Hair Shampoo, an advanced organic formula with 25+ rare botanicals for complete hair fall defense and intense hydration."
+        path="/products"
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "MJ Herbal Hair Shampoo",
+          "image": "https://mjmarketingofficial.com/shampoo-bottle.jpeg",
+          "description": "Advanced organic formula with 25+ rare botanicals for complete hair fall defense and intense hydration.",
+          "brand": {
+            "@type": "Brand",
+            "name": "MJ Cosmetics"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://mjmarketingofficial.com/products",
+            "priceCurrency": "PKR",
+            "price": "2500",
+            "availability": "https://schema.org/InStock"
+          }
+        }}
       />
       
       <PremiumProductShowcase />

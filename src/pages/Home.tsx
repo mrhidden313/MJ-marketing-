@@ -113,6 +113,23 @@ export default function Home() {
       <SEO 
         title="MJ GROUP OF COMPANIES | Peshawar's #1 Luxury Real Estate Agency" 
         description="Discover Peshawar's most prestigious real estate. MJ GROUP OF COMPANIES offers exclusive access to luxury homes, VIP projects, and high-yield commercial investments."
+        path="/"
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": ["RealEstateAgent", "LocalBusiness"],
+          "name": "MJ GROUP OF COMPANIES",
+          "image": "https://mjmarketingofficial.com/logo.png",
+          "url": "https://mjmarketingofficial.com",
+          "telephone": "+923005522555",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ring Road, Pishtakhara Chowk, Peshawar",
+            "addressLocality": "Peshawar",
+            "addressRegion": "KPK",
+            "addressCountry": "PK"
+          },
+          "priceRange": "$$$"
+        }}
       />
       
       <ScrollProgressBar />
@@ -183,6 +200,7 @@ export default function Home() {
             className="relative mb-8 max-w-4xl"
           >
             <h1 className="font-display font-900 text-white tracking-tight leading-[1.08] text-4xl sm:text-6xl md:text-7xl">
+              <span className="sr-only">Peshawar's Premier Luxury Real Estate Agency. </span>
               Building The <br />
               <span className="text-[#ffd700]">Sustainable </span>
               <span className="text-[#ffd700]">Future</span>
