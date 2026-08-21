@@ -124,7 +124,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative top-auto left-auto transform-none z-50 w-[85%] md:w-[30%] max-w-[360px] pointer-events-none mt-12"
+        className="relative top-auto left-auto transform-none z-50 w-[95%] md:w-[42%] max-w-[500px] pointer-events-none mt-12 md:mt-4"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
@@ -142,25 +142,25 @@ export default function PremiumProductShowcase() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-4 text-right"
+            className="absolute left-4 md:left-16 lg:left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-6 text-right"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
-              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
+              className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-end gap-2 text-lg">
-                Onion Power <Leaf size={18} />
+              <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-end gap-3 text-xl">
+                Onion Power <Leaf size={22} />
               </h3>
-              <p className="text-white/70 text-xs leading-relaxed">Rich in sulfur, helps reduce hair fall and boosts rapid growth.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">Rich in sulfur, helps reduce hair fall and boosts rapid growth naturally.</p>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
-              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default mt-4"
+              className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-end gap-2 text-lg">
-                Amla Extract <Droplets size={18} />
+              <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-end gap-3 text-xl">
+                Amla Extract <Droplets size={22} />
               </h3>
-              <p className="text-white/70 text-xs leading-relaxed">Strengthens hair roots and promotes new natural hair growth.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">Strengthens hair roots and actively promotes new, natural hair growth.</p>
             </motion.div>
           </motion.div>
         )}
@@ -173,25 +173,25 @@ export default function PremiumProductShowcase() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute right-4 md:right-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start gap-4 text-left"
+            className="absolute right-4 md:right-16 lg:right-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start gap-6 text-left"
           >
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
-              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
+              className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-start gap-2 text-lg">
-                <CheckCircle2 size={18} /> Reetha
+              <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-start gap-3 text-xl">
+                <CheckCircle2 size={22} /> Reetha
               </h3>
-              <p className="text-white/70 text-xs leading-relaxed">Natural cleanser that gently cleanses scalp without stripping oils.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">Natural cleanser that gently washes scalp without stripping essential oils.</p>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
-              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default mt-4"
+              className="glass p-6 md:p-7 rounded-3xl border border-white/10 max-w-[280px] md:max-w-[320px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
             >
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-start gap-2 text-lg">
-                <ShieldCheck size={18} /> 25+ Herbs
+              <h3 className="text-gold-400 font-bold mb-3 flex items-center justify-start gap-3 text-xl">
+                <ShieldCheck size={22} /> 25+ Herbs
               </h3>
-              <p className="text-white/70 text-xs leading-relaxed">A powerful blend of Shikakai, Brahmi, Bhringraj, and Methi Dana.</p>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">A powerful blend of Shikakai, Brahmi, Bhringraj, Methi Dana, and more.</p>
             </motion.div>
           </motion.div>
         )}
