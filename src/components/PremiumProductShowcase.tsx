@@ -124,7 +124,7 @@ export default function PremiumProductShowcase() {
           damping: 12,
           mass: 1.5
         }}
-        className="relative top-auto left-auto transform-none z-50 w-[95%] md:w-[42%] max-w-[500px] pointer-events-none mt-12 md:mt-4"
+        className="relative top-auto left-auto transform-none z-50 w-[80%] md:w-[32%] max-w-[400px] pointer-events-none mt-12"
       >
         <motion.img 
           animate={{ y: hasDropped ? [0, -10, 0] : 0 }}
