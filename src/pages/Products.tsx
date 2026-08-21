@@ -44,7 +44,13 @@ export default function Products() {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover transition-transform duration-700"
+              title="Click to Mute/Unmute"
+              onClick={() => {
+                if (videoRef.current) {
+                  videoRef.current.muted = !videoRef.current.muted;
+                }
+              }}
+              className="w-full h-full object-cover transition-transform duration-700 cursor-pointer"
             />
           </div>
         </motion.div>
