@@ -9,6 +9,10 @@ export default function PremiumProductShowcase() {
     // Trigger the drop animation after a longer delay so it stays hidden initially
     const timer = setTimeout(() => {
       setHasDropped(true);
+      // Play bubble sound exactly when drop triggers
+      const audio = new Audio('/bubble.mp3');
+      audio.volume = 0.5;
+      audio.play().catch(e => console.log('Audio autoplay blocked', e));
     }, 800); // Reduced delay for faster entry
     return () => clearTimeout(timer);
   }, []);
@@ -138,18 +142,24 @@ export default function PremiumProductShowcase() {
             transition={{ delay: 1, duration: 0.8 }}
             className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-4 text-right"
           >
-            <div className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:bg-white/10 transition-colors cursor-default">
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
+              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
+            >
               <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-end gap-2 text-lg">
                 Onion Power <Leaf size={18} />
               </h3>
               <p className="text-white/70 text-xs leading-relaxed">Rich in sulfur, helps reduce hair fall and boosts rapid growth.</p>
-            </div>
-            <div className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:bg-white/10 transition-colors cursor-default mt-4">
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
+              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default mt-4"
+            >
               <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-end gap-2 text-lg">
                 Amla Extract <Droplets size={18} />
               </h3>
               <p className="text-white/70 text-xs leading-relaxed">Strengthens hair roots and promotes new natural hair growth.</p>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -163,18 +173,24 @@ export default function PremiumProductShowcase() {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="absolute right-4 md:right-24 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start gap-4 text-left"
           >
-            <div className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:bg-white/10 transition-colors cursor-default">
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center gap-2 text-lg">
-                <ShieldCheck size={18} /> Reetha
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
+              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default"
+            >
+              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-start gap-2 text-lg">
+                <CheckCircle2 size={18} /> Reetha
               </h3>
               <p className="text-white/70 text-xs leading-relaxed">Natural cleanser that gently cleanses scalp without stripping oils.</p>
-            </div>
-            <div className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:bg-white/10 transition-colors cursor-default mt-4">
-              <h3 className="text-gold-400 font-bold mb-2 flex items-center gap-2 text-lg">
-                <CheckCircle2 size={18} /> 25+ Herbs
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5, boxShadow: "0 0 40px rgba(168,85,247,0.4)" }}
+              className="glass p-5 rounded-2xl border border-white/10 max-w-[220px] backdrop-blur-xl bg-white/5 shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-colors cursor-default mt-4"
+            >
+              <h3 className="text-gold-400 font-bold mb-2 flex items-center justify-start gap-2 text-lg">
+                <ShieldCheck size={18} /> 25+ Herbs
               </h3>
               <p className="text-white/70 text-xs leading-relaxed">A powerful blend of Shikakai, Brahmi, Bhringraj, and Methi Dana.</p>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -206,12 +222,23 @@ export default function PremiumProductShowcase() {
               <motion.div 
                 key={badge.text}
                 variants={{
-                  hidden: { opacity: 0, y: 20, scale: 0.8 },
-                  visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100 } }
+                  hidden: { opacity: 0, y: 150, scale: 0.3 }, // Comes from way down
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1, 
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 120, 
+                      damping: 10,
+                      mass: 0.8
+                    } 
+                  }
                 }}
-                className="flex flex-col items-center gap-3"
+                whileHover={{ scale: 1.15, y: -10 }}
+                className="flex flex-col items-center gap-3 cursor-pointer"
               >
-                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-gold-500/40 flex items-center justify-center text-2xl md:text-3xl bg-[#0b0514]/80 backdrop-blur-md shadow-[0_0_20px_rgba(250,204,21,0.1)]">
+                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-gold-500/40 flex items-center justify-center text-2xl md:text-3xl bg-[#0b0514]/80 backdrop-blur-md shadow-[0_0_20px_rgba(250,204,21,0.1)] transition-colors hover:bg-white/10 hover:border-gold-400 hover:shadow-[0_0_30px_rgba(250,204,21,0.3)]">
                   {badge.icon}
                 </div>
                 <span className="text-[10px] md:text-xs text-gold-400 font-bold uppercase tracking-widest text-center max-w-[80px]">
