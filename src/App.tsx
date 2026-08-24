@@ -206,7 +206,7 @@ function WhatsAppFAB() {
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut', delay: 0.7 }}
       />
       <motion.a
-        href="https://wa.me/923005522555"
+        href="https://wa.me/923044522555"
         target="_blank"
         rel="noopener noreferrer"
         style={{

@@ -120,7 +120,7 @@ export default function Home() {
           "name": "MJ GROUP OF COMPANIES",
           "image": "https://mjmarketingofficial.com/logo.png",
           "url": "https://mjmarketingofficial.com",
-          "telephone": "+923005522555",
+          "telephone": "0915230522",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Ring Road, Pishtakhara Chowk, Peshawar",

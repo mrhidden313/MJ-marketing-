@@ -180,7 +180,7 @@ export default function Navbar() {
 
             {/* ── CTA with dynamic slide on scroll ── */}
             <motion.a
-              href="tel:+923005522555"
+              href="tel:0915230522"
               className={`hidden md:inline-flex items-center justify-center gap-1.5 transition-all duration-700 ease-in-out ${theme.btn} ${scrolled ? `py-1.5 px-4 text-xs scale-95 ${theme.shadowScroll}` : 'py-3 px-8 text-sm scale-100'
                 }`}
               whileHover={{ scale: 1.05 }}
@@ -221,7 +221,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <a href="tel:+923005522555" className={`mt-3 py-3 text-sm flex items-center justify-center gap-2 ${theme.btn}`}>
+              <a href="tel:0915230522" className={`mt-3 py-3 text-sm flex items-center justify-center gap-2 ${theme.btn}`}>
                 <Phone size={14} /> Call Now
               </a>
             </div>
