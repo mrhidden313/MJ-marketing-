@@ -21,7 +21,7 @@ const INFO = [
   { icon: Phone, label: 'VIP Direct Line', value: '091 523 0522', href: 'tel:0915230522' },
   { icon: MessageCircle, label: 'WhatsApp (Primary)', value: '0304 452 2555', href: 'https://wa.me/923044522555' },
   { icon: MessageCircle, label: 'WhatsApp (Secondary)', value: '0332 452 2555', href: 'https://wa.me/923324522555' },
-  { icon: Mail, label: 'Email Inquiries', value: 'info@mjmarketingofficial.com', href: 'mailto:info@mjmarketingofficial.com' },
+  { icon: Mail, label: 'Private Email', value: 'jalilkhan0300@gmail.com', href: 'mailto:jalilkhan0300@gmail.com' },
   { icon: MapPin, label: 'Headquarters', value: 'Ring Road , Pishtakhara Chowk , Peshawar', href: 'https://maps.app.goo.gl/UbCALsZHu9Y9bFqW9' },
 ];
 
