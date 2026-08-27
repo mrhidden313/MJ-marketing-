@@ -530,15 +530,21 @@ export default function Admin() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm text-white/50 mb-1">Video (Optional)</label>
-                    <div className="flex items-center gap-4">
-                      {currentActivity.video_url && (
-                         <video src={currentActivity.video_url} className="h-16 w-16 object-cover rounded-lg" muted />
-                      )}
-                      <label className="cursor-pointer bg-white/10 px-4 py-2 rounded-lg text-sm hover:bg-white/20 transition-colors">
-                        {uploading ? 'Uploading...' : 'Upload Video'}
-                        <input type="file" accept="video/*" onChange={(e) => handleVideoUpload(e, 'activity')} disabled={uploading} className="hidden" />
-                      </label>
+                    <label className="block text-sm text-white/50 mb-1">Video (URL or Upload)</label>
+                    <div className="flex flex-col gap-2">
+                      <input 
+                        type="text" 
+                        value={currentActivity.video_url} 
+                        onChange={e => setCurrentActivity({...currentActivity, video_url: e.target.value})} 
+                        className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white" 
+                        placeholder="Paste Facebook/YouTube/TikTok URL or Upload..." 
+                      />
+                      <div className="flex items-center gap-4 mt-1">
+                        <label className="cursor-pointer bg-white/10 px-4 py-2 rounded-lg text-sm hover:bg-white/20 transition-colors">
+                          {uploading ? 'Uploading...' : 'Upload Video File'}
+                          <input type="file" accept="video/*" onChange={(e) => handleVideoUpload(e, 'activity')} disabled={uploading} className="hidden" />
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>

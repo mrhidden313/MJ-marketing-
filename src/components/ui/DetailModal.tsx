@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Tag, MapPin } from 'lucide-react';
+import ReactPlayer from 'react-player';
 
 export interface DetailModalProps {
   isOpen: boolean;
@@ -80,15 +81,16 @@ export default function DetailModal({
             {hasMedia && (
               <div className="w-full md:w-1/2 relative bg-black flex-shrink-0 flex items-center justify-center overflow-hidden h-[300px] md:h-auto">
                 {video_url ? (
-                  <video
-                    ref={videoRef}
-                    src={video_url}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="w-full h-full">
+                    <ReactPlayer 
+                      url={video_url} 
+                      playing 
+                      controls
+                      width="100%" 
+                      height="100%" 
+                      style={{ objectFit: 'cover' }} 
+                    />
+                  </div>
                 ) : (
                   <img
                     src={image}

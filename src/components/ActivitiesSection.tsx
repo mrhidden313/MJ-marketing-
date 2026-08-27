@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import type { Activity } from '../types';
 import DetailModal from './ui/DetailModal';
+import ReactPlayer from 'react-player';
 
 export default function ActivitiesSection() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -56,7 +57,17 @@ export default function ActivitiesSection() {
                 {activity.image ? (
                   <img src={activity.image} alt={activity.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 ) : activity.video_url ? (
-                  <video src={activity.video_url} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="w-full h-full group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <ReactPlayer 
+                      url={activity.video_url} 
+                      playing 
+                      muted 
+                      loop 
+                      width="100%" 
+                      height="100%" 
+                      style={{ objectFit: 'cover', pointerEvents: 'none' }} 
+                    />
+                  </div>
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black" />
                 )}
