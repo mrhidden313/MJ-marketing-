@@ -18,6 +18,16 @@ export interface Product {
   title: string;
   description: string;
   price: string;
-  image: string;
+  image?: string;
+  video_url?: string;
+  created_at?: string;
+}
+
+export interface Activity {
+  id: string;
+  title: string;
+  description: string;
+  image?: string;
+  video_url?: string;
   created_at?: string;
 }

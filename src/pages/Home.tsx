@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import ActivitiesSection from '../components/ActivitiesSection';
 import {
   motion,
   useScroll,
@@ -406,6 +407,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════ ACTIVITIES SECTION ══════════════════════════ */}
+      <ActivitiesSection />
 
       {/* ═══════════════════════════════ CORE SERVICES ════════════════════════════ */}
       <CoreServicesGrid />

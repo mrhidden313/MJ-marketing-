@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useProperties } from '../hooks/useProperties';
 import { useTeamMembers } from '../hooks/useTeamMembers';
 import { useProducts } from '../hooks/useProducts';
+import { useActivities } from '../hooks/useActivities';
 import { supabase } from '../lib/supabase';
 import imageCompression from 'browser-image-compression';
 import { useNavigate } from 'react-router-dom';
@@ -11,9 +12,10 @@ export default function Admin() {
   const { properties, loading: propsLoading } = useProperties();
   const { members, loading: teamLoading } = useTeamMembers();
   const { products, loading: productsLoading } = useProducts();
+  const { activities, loading: activitiesLoading } = useActivities();
   const navigate = useNavigate();
   
-  const [activeTab, setActiveTab] = useState<'properties' | 'team' | 'products'>('properties');
+  const [activeTab, setActiveTab] = useState<'properties' | 'team' | 'products' | 'activities'>('properties');
   
   const [isEditing, setIsEditing] = useState(false);
   const [currentProperty, setCurrentProperty] = useState<any>({
@@ -27,12 +29,17 @@ export default function Admin() {
   
   const [isEditingProduct, setIsEditingProduct] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<any>({
-    id: '', title: '', description: '', price: '', image: ''
+    id: '', title: '', description: '', price: '', image: '', video_url: ''
+  });
+  
+  const [isEditingActivity, setIsEditingActivity] = useState(false);
+  const [currentActivity, setCurrentActivity] = useState<any>({
+    id: '', title: '', description: '', image: '', video_url: ''
   });
   
   const [uploading, setUploading] = useState(false);
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: 'property' | 'team' | 'product') => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: 'property' | 'team' | 'product' | 'activity') => {
     let file = e.target.files?.[0];
     if (!file) return;
     
@@ -59,6 +66,8 @@ export default function Admin() {
         setCurrentTeam({ ...currentTeam, image: url });
       } else if (type === 'product') {
         setCurrentProduct({ ...currentProduct, image: url });
+      } else if (type === 'activity') {
+        setCurrentActivity({ ...currentActivity, image: url });
       }
     } catch (error) {
       console.error("Error uploading image: ", error);
@@ -68,7 +77,7 @@ export default function Admin() {
     }
   };
 
-  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: 'property' | 'product' | 'activity') => {
     let file = e.target.files?.[0];
     if (!file) return;
     
@@ -86,7 +95,13 @@ export default function Admin() {
       if (uploadError) throw uploadError;
       
       const { data: { publicUrl } } = supabase.storage.from('images').getPublicUrl(fileName);
-      setCurrentProperty({ ...currentProperty, video_url: publicUrl });
+      if (type === 'property') {
+        setCurrentProperty({ ...currentProperty, video_url: publicUrl });
+      } else if (type === 'product') {
+        setCurrentProduct({ ...currentProduct, video_url: publicUrl });
+      } else if (type === 'activity') {
+        setCurrentActivity({ ...currentActivity, video_url: publicUrl });
+      }
     } catch (error) {
       console.error("Error uploading video: ", error);
       alert("Failed to upload video.");
@@ -168,6 +183,21 @@ export default function Admin() {
     window.location.reload();
   };
 
+  const handleDeleteActivity = async (id: string) => {
+    if (window.confirm('Are you sure you want to delete this activity?')) {
+      await supabase.from('activities').delete().eq('id', id);
+      window.location.reload();
+    }
+  };
+
+  const handleSaveActivity = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = currentActivity.id || Date.now().toString();
+    await supabase.from('activities').upsert({ ...currentActivity, id });
+    setIsEditingActivity(false);
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-[#02040a] text-white p-8 pt-32">
       <div className="max-w-6xl mx-auto">
@@ -198,6 +228,12 @@ export default function Admin() {
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-colors ${activeTab === 'products' ? 'bg-gold-500 text-black' : 'bg-white/5 text-white/50 hover:bg-white/10'}`}
             >
               <HomeIcon size={18} /> Products
+            </button>
+            <button 
+              onClick={() => setActiveTab('activities')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-colors ${activeTab === 'activities' ? 'bg-gold-500 text-black' : 'bg-white/5 text-white/50 hover:bg-white/10'}`}
+            >
+              <Users size={18} /> Activities
             </button>
           </div>
         )}
@@ -238,7 +274,7 @@ export default function Admin() {
                 <div className="col-span-2">
                   <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Video URL (or Upload)</label>
                   <div className="flex gap-2">
-                    <input type="file" accept="video/*" onChange={handleVideoUpload} disabled={uploading} className="hidden" id="prop-video-upload" />
+                    <input type="file" accept="video/*" onChange={(e) => handleVideoUpload(e, 'property')} disabled={uploading} className="hidden" id="prop-video-upload" />
                     <label htmlFor="prop-video-upload" className="bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg cursor-pointer flex items-center justify-center whitespace-nowrap border border-white/10">
                       {uploading ? 'Uploading...' : 'Upload Video'}
                     </label>
@@ -452,6 +488,98 @@ export default function Admin() {
               </div>
             </>
           )
+        )}
+
+        {/* ════════════════════ ACTIVITIES TAB ════════════════════ */}
+        {activeTab === 'activities' && (
+          <div>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold">Manage Activities</h2>
+              <button 
+                onClick={() => {
+                  setCurrentActivity({ id: '', title: '', description: '', image: '', video_url: '' });
+                  setIsEditingActivity(true);
+                }}
+                className="bg-gold-500 text-black px-4 py-2 rounded-lg font-bold flex items-center gap-2"
+              >
+                <Plus size={18} /> Add Activity
+              </button>
+            </div>
+            
+            {isEditingActivity ? (
+              <form onSubmit={handleSaveActivity} className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-8 space-y-4">
+                <h3 className="text-xl font-bold mb-4">{currentActivity.id ? 'Edit Activity' : 'New Activity'}</h3>
+                <div>
+                  <label className="block text-sm text-white/50 mb-1">Title</label>
+                  <input required value={currentActivity.title} onChange={e => setCurrentActivity({...currentActivity, title: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white" />
+                </div>
+                <div>
+                  <label className="block text-sm text-white/50 mb-1">Description</label>
+                  <textarea required value={currentActivity.description} onChange={e => setCurrentActivity({...currentActivity, description: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white h-32" />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-white/50 mb-1">Image (Optional)</label>
+                    <div className="flex items-center gap-4">
+                      {currentActivity.image && <img src={currentActivity.image} alt="Preview" className="h-16 w-16 object-cover rounded-lg" />}
+                      <label className="cursor-pointer bg-white/10 px-4 py-2 rounded-lg text-sm hover:bg-white/20 transition-colors">
+                        {uploading ? 'Uploading...' : 'Upload Image'}
+                        <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'activity')} disabled={uploading} className="hidden" />
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm text-white/50 mb-1">Video (Optional)</label>
+                    <div className="flex items-center gap-4">
+                      {currentActivity.video_url && (
+                         <video src={currentActivity.video_url} className="h-16 w-16 object-cover rounded-lg" muted />
+                      )}
+                      <label className="cursor-pointer bg-white/10 px-4 py-2 rounded-lg text-sm hover:bg-white/20 transition-colors">
+                        {uploading ? 'Uploading...' : 'Upload Video'}
+                        <input type="file" accept="video/*" onChange={(e) => handleVideoUpload(e, 'activity')} disabled={uploading} className="hidden" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4 pt-4">
+                  <button type="submit" className="bg-gold-500 text-black px-6 py-2 rounded-lg font-bold">Save Activity</button>
+                  <button type="button" onClick={() => setIsEditingActivity(false)} className="bg-white/10 px-6 py-2 rounded-lg font-bold">Cancel</button>
+                </div>
+              </form>
+            ) : activitiesLoading ? (
+              <p>Loading activities...</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {activities.map((a: any) => (
+                  <div key={a.id} className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group">
+                    <div className="h-48 relative bg-black flex items-center justify-center">
+                      {a.image ? (
+                        <img src={a.image} alt={a.title} className="w-full h-full object-cover" />
+                      ) : a.video_url ? (
+                        <video src={a.video_url} className="w-full h-full object-cover" muted />
+                      ) : (
+                        <span className="text-white/20">No Media</span>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-bold text-lg">{a.title}</h3>
+                      <p className="text-sm text-white/50 truncate mb-4">{a.description}</p>
+                      <div className="flex justify-between items-center">
+                        <button onClick={() => { setCurrentActivity(a); setIsEditingActivity(true); }} className="p-2 text-white/50 hover:text-white transition-colors">
+                          <Edit2 size={16} />
+                        </button>
+                        <button onClick={() => handleDeleteActivity(a.id)} className="p-2 text-red-500/50 hover:text-red-500 transition-colors">
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         )}
 
       </div>

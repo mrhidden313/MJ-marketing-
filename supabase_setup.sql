@@ -48,3 +48,38 @@ create policy "Public images are viewable by everyone." on storage.objects for s
 create policy "Authenticated users can upload images." on storage.objects for insert with check (bucket_id = 'images' and auth.role() = 'authenticated');
 create policy "Authenticated users can update images." on storage.objects for update using (bucket_id = 'images' and auth.role() = 'authenticated');
 create policy "Authenticated users can delete images." on storage.objects for delete using (bucket_id = 'images' and auth.role() = 'authenticated');
+
+-- Create products table
+create table products (
+  id text primary key,
+  title text,
+  description text,
+  price text,
+  image text,
+  video_url text,
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Enable RLS for products
+alter table products enable row level security;
+create policy "Public products are viewable by everyone." on products for select using (true);
+create policy "Authenticated users can insert products." on products for insert with check (auth.role() = 'authenticated');
+create policy "Authenticated users can update products." on products for update using (auth.role() = 'authenticated');
+create policy "Authenticated users can delete products." on products for delete using (auth.role() = 'authenticated');
+
+-- Create activities table
+create table activities (
+  id text primary key,
+  title text,
+  description text,
+  image text,
+  video_url text,
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Enable RLS for activities
+alter table activities enable row level security;
+create policy "Public activities are viewable by everyone." on activities for select using (true);
+create policy "Authenticated users can insert activities." on activities for insert with check (auth.role() = 'authenticated');
+create policy "Authenticated users can update activities." on activities for update using (auth.role() = 'authenticated');
+create policy "Authenticated users can delete activities." on activities for delete using (auth.role() = 'authenticated');

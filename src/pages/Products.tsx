@@ -1,12 +1,18 @@
 import React, { useRef, useEffect } from 'react';
 import SEO from '../components/SEO';
 import { motion, useInView } from 'framer-motion';
-import { Shield, Sparkles, Droplet, Leaf } from 'lucide-react';
+import { Shield, Sparkles, Droplet, Leaf, ShoppingBag } from 'lucide-react';
 import PremiumProductShowcase from '../components/PremiumProductShowcase';
+import { useProducts } from '../hooks/useProducts';
+import DetailModal from '../components/ui/DetailModal';
+import type { Product } from '../types';
 
 export default function Products() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isVideoInView = useInView(videoRef, { once: true, margin: "-100px" });
+  
+  const { products, loading } = useProducts();
+  const [selectedProduct, setSelectedProduct] = React.useState<Product | null>(null);
 
   useEffect(() => {
     if (isVideoInView && videoRef.current) {
@@ -152,6 +158,86 @@ export default function Products() {
         </motion.div>
 
       </div>
+
+      {/* ═══════════════════════════════ PRODUCT CATALOG ════════════════════════════ */}
+      <div className="w-full bg-[#050811] py-24 relative z-20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <span className="text-gold-400 font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2 mb-4">
+              <ShoppingBag size={14} /> Our Collection
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display font-900 text-white tracking-tight">
+              Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Products</span>
+            </h2>
+          </motion.div>
+
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <div className="w-8 h-8 border-4 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
+            </div>
+          ) : products.length === 0 ? (
+            <p className="text-center text-white/50 py-12">No products available at the moment.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.map((product, idx) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  onClick={() => setSelectedProduct(product)}
+                  className="bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden group cursor-pointer hover:border-gold-500/30 transition-all duration-300 shadow-lg hover:shadow-gold-500/10 flex flex-col h-full"
+                >
+                  <div className="h-64 relative bg-black overflow-hidden flex items-center justify-center">
+                    {product.video_url ? (
+                      <video src={product.video_url} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    ) : product.image ? (
+                      <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-900 to-[#0b0514]" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/40 to-transparent" />
+                  </div>
+                  
+                  <div className="p-6 md:p-8 flex flex-col flex-1 relative z-10">
+                    <h3 className="text-2xl font-display font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
+                      {product.title}
+                    </h3>
+                    <p className="text-white/60 text-sm line-clamp-3 leading-relaxed mb-6">
+                      {product.description}
+                    </p>
+                    <div className="mt-auto flex items-center justify-between">
+                      <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">
+                        {product.price}
+                      </span>
+                      <button className="bg-white/10 hover:bg-gold-500 hover:text-black text-white/90 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all">
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <DetailModal
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        title={selectedProduct?.title || ''}
+        description={selectedProduct?.description || ''}
+        image={selectedProduct?.image}
+        video_url={selectedProduct?.video_url}
+        price={selectedProduct?.price}
+        type="Product"
+      />
     </div>
   );
 }
