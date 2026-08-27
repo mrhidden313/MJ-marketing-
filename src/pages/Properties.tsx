@@ -142,7 +142,7 @@ export default function Properties() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <PropertyCard p={p} />
+                <PropertyCard property={p} />
               </motion.div>
             ))}
 

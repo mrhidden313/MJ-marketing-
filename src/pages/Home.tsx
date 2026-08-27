@@ -336,7 +336,7 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.9, delay: (idx % 3) * 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
-                <PropertyCard p={property} />
+                <PropertyCard property={property} />
               </motion.div>
             ))}
           </div>
