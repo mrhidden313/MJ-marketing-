@@ -39,8 +39,8 @@ export default function Admin() {
     setUploading(true);
     try {
       const options = {
-        maxSizeMB: 0.15,
-        maxWidthOrHeight: 800,
+        maxSizeMB: 1.5,
+        maxWidthOrHeight: 1920,
         useWebWorker: true,
       };
       
